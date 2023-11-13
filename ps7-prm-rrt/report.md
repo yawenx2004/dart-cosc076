@@ -43,31 +43,31 @@ Output —
 # Testing
 I ran PRM on 2R, 3R, and 4R robots with various start and goal configurations as well as various obstacles. Here are four selected test cases; you can also find them in test_prm.py:
 ## 2R robot testing
-environment:
+environment:\
 ![2R environment](figures/2r_env.png)\
 \
-solution (k=5, num_samples=5000):
+solution (k=5, num_samples=5000):\
 ![2R solution](figures/2r_sol.png)
 ## 4R robot testing
-environment:
+environment:\
 ![4R environment](figures/4r_env.png)\
 \
-solution (k=5, num_samples=5000):
+solution (k=5, num_samples=5000):\
 ![4R solution](figures/4r_sol.png)\
 \
-solution (k=100, num_samples=1000):
+solution (k=100, num_samples=1000):\
 ![4R solution](figures/4r_sol1.png)
 ## 4R* (harder 4R) robot testing
-environment:
+environment:\
 ![4Rx environment](figures/4rx_env.png)\
 \
-solution (k=100, num_samples=1000):
+solution (k=100, num_samples=1000):\
 ![4Rx solution](figures/4rx_sol.png)
 ## 4R** (hardest 4R) robot testing
-environment:
+environment:\
 ![4Rxx environment](figures/4rxx_env.png)\
 \
-solution (k=100, num_samples=1000):
+solution (k=100, num_samples=1000):\
 ![4Rxx solution](figures/4rxx_sol.png)
 ## Summary:
 Table of output with k=5 and num_samples = 5000 (default); numbers represent number of steps in output path and 4R* and 4R** are the harder 4R problems:
