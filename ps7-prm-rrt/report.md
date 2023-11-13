@@ -83,7 +83,7 @@ num_samples=5000
 </pre>
 As we can see, this setup only returns a solution for the problem 1 out of 3 trials (actually less — I ran a few trials before officially recording). Yet, based on the outputted found configurations below, paths are possible.\
 \
-Figure:
+Figure:\
 ![4R configs](figures/4r_configs.png)\
 \
 The problem, therefore, is that there isn't enough connectivity — intuitively there are obviously paths between some of these configurations, but the algorithm does not find them. So, I ran PRM again with k set to 100 and num_samples set to 1000. This results in much greater connectivity, and therefore much shorter (and more direct) paths. More importantly, now the algorithm actually finds a solution for the 4R robot case most of the time.
@@ -139,29 +139,30 @@ Basically these are the changes, in practical terms —
 - Since the closest we get to a corner, the less likely the original sample() method is going to pick a point that will lead us into that corner, I changed sample() so that it chooses an angle value instead. This avoids fan formations (as you'll see in my outputs below).
 
 I had 4 environments. Test cases below:
-Environment 0:
-Solution (RRT):
+Environment 0:\
+Solution (RRT):\
 ![RRT solution 0](figures/rrt_sol0.png)\
 \
-Solution(RRT2):
+Solution(RRT2):\
 ![RRT2 solution 0](figures/rrt_sol0_2.png)\
 \
-Environment 1:
-Solution (RRT):
+Environment 1:\
+Solution (RRT):\
 ![RRT solution 1](figures/rrt_sol1.png)\
 \
-Solution(RRT2):
+Solution(RRT2):\
 ![RRT solution 1](figures/rrt_sol1_2.png)\
 \
-Environment 2:
-Solution(RRT2):
+Environment 2:\
+Solution(RRT2):\
 ![RRT solution 2](figures/rrt_sol2_2.png)\
 \
-Environment 3:
-Solution(RRT2):
+Environment 3:\
+Solution(RRT2):\
 ![RRT solution 3](figures/rrt_sol3_2.png)\
 \
-Environment 4:Solution(RRT2):
+Environment 4:\
+Solution(RRT2):\
 ![RRT solution 4](figures/rrt_sol4_2.png)\
 \
 Summary of tests here —\
@@ -198,7 +199,7 @@ Onto environment 1 (short bar obstacle):
 </pre>
 Same effect as environment 0. Though RRT2 has the smaller median graph, its mean is much higher, and its paths returned are less straightforward. Here, RRT wins again.\
 \
-The last graph returned looks like this. As you can see, there are many unnecessary points:
+The last graph returned looks like this. As you can see, there are many unnecessary points:\
 ![RRT solution 1](figures/rrt_sol1_2_biggraph.png)\
 \
 Onto environment 2, similar to 1 but with a longer bar:
@@ -217,7 +218,7 @@ Onto environment 2, similar to 1 but with a longer bar:
 </pre>
 Here's where the advantages of RRT2 comes in. With actual relevant obstacles, RRT is unable to find a path. It gets stuck in the exact same spot and stays there forever. RRT2, however, is able to get unstuck.\
 \
-RRT getting stuck:
+RRT getting stuck:\
 ![RRT stuck 2](figures/rrt_stuck2.png)\
 \
 We move on to environment 3:
