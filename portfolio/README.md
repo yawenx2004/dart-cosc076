@@ -4,7 +4,7 @@
     - [Key Concepts](#key-concepts)
 3. [PRM & the Arm Robot](#prm--the-arm-robot-)
 4. [RRT](#rrt-)
-5. [Code Design & Implementation](code-design--implementation-%EF%B8%8F)
+5. [Code Design & Implementation](#code-design--implementation-%EF%B8%8F)
     - [PRM Implementation](#prm-implementation)
     - [RRT Implementation](#rrt-implementation)
 6. [Testing](#testing-)
