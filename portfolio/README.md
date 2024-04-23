@@ -4,13 +4,13 @@
     - [Key Concepts](#key-concepts)
 3. [PRM & the Arm Robot](#prm--the-arm-robot-)
 4. [RRT](#rrt-)
-5. [Code Design & Implementation](#code-design--implementation)
+5. [Code Design & Implementation](#code-design--implementation-)
     - [PRM Implementation](#prm-implementation)
     - [RRT Implementation](#rrt-implementation)
-6. [Testing](#testing)
+6. [Testing](#testing-)
     - [PRM Demo](#prm-demo)
     - [RRT Testing](#rrt-testing)
-7. [Conclusion](#conclusion)
+7. [Conclusion](#conclusion-)
 
 # 💡 TL;DR 💡
 This report is running so much longer than I expected it to so here are a few salient points:
@@ -57,7 +57,7 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 
 - **Output**: sequence of valid arm configurations that allow the arm to move from start to goal, without bumping into obstacles
 
-# RRT 🚗
+# RRT 🛼🚀
 
 - **Input:**
 
@@ -69,7 +69,7 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 
 - **Output:** a path from the start to the end that avoids collision with obstacles
 
-# Code Design & Implementation
+# Code Design & Implementation 🛠️
 As of 22 April 2024 I have rewritten the code from last fall; you can find them [here](/PRM) (PRM) and [here](/RRT) (RRT). Original code is [here](https://github.com/yawenx2004/dart-cosc076/tree/main/ps7-prm-rrt).
 
 **Note:** We are using the intersects() function of the shapely library to check for collisions, and using matplotlib to visualize. Search/solve is done through a simple BFS.
@@ -111,7 +111,7 @@ Onto RRT.
 ### RRT Implementation
 🚧
 
-# Testing
+# Testing 🐞🔍
 ### PRM Demo
 In test_prm.py I have written several test cases for an 2R planar robot and a 4R planar robot (this one with environments of varying difficulty). To select the test case, just comment out lines as specified in the Python file. When you run test_prm.py in its current form you should see, aside from the solution in the console, a matplotlib animation of an arm moving from the start to the goal configuration.
 
@@ -147,5 +147,5 @@ A visualization of the problem—
 ### RRT Testing
 🚧
 
-# Conclusion
+# Conclusion 🌿
 🚧
