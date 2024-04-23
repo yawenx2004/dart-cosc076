@@ -43,7 +43,7 @@ Both of these algorithms involve **discretizing a continuous search space**, a t
 
 Now that we've defined the algorithms, let's move on to the specific implementations in this project.
 
-# PRM & the Arm Robot 🔧🤖
+# PRM & the Arm Robot 🤖
 
 - **Input:**
 
@@ -57,7 +57,9 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 
 - **Output**: sequence of valid arm configurations that allow the arm to move from start to goal, without bumping into obstacles
 
-# RRT 🛼🚀
+# RRT & the (very very very abstract & symbolic) Car Robot 🛼
+
+Imagine the car is just a dot.
 
 - **Input:**
 
