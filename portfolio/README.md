@@ -3,7 +3,7 @@
 2. [Introduction](#introduction-)
     - [Key Concepts](#key-concepts)
 3. [PRM & the Arm Robot](#prm--the-arm-robot-)
-4. [RRT](#rrt-)
+4. [RRT](#rrt--the-very-very-very-abstract--symbolic-car-robot-)
 5. [Code Design & Implementation](#code-design--implementation-%EF%B8%8F)
     - [PRM Implementation](#prm-implementation)
     - [RRT Implementation](#rrt-implementation)
