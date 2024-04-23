@@ -142,6 +142,7 @@ PATH: [(0, 0, 0, 300), (132.56911930250288, 218.5923196635714, 219.1596005939524
 LENGTH: 3
 ```
 A visualization of the problem—
+
 ![Figure 3.](figures/prm-4r-hardest-configs.png)
 
 **Note:** This test case runs in about 15 seconds if you choose to visualize, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
