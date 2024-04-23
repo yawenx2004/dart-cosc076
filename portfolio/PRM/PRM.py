@@ -33,7 +33,7 @@ class PRM:
         self.samples = [self.start_config, goal_config]
         self.kd_tree = None                 # speed: helps search nearby configurations
 
-        # graph to search with PRMSolver
+        # graph to search with prmsolver
         self.edges = []
         self.start_config_reached = False   # keep building graph until exists edge that includes start_config...
         self.goal_config_reached = False    # and goal_config
