@@ -1,6 +1,6 @@
 # Contents
-1. [TL;DR](#💡-tldr-💡)
-2. [Introduction](#🌱-introduction-🌱)
+1. [TL;DR](#-tldr-)
+2. [Introduction](#-introduction-)
     - [Key Concepts](#key-concepts)
 3. [PRM & the Arm Robot](#prm--the-arm-robot)
 4. [RRT](#rrt)
