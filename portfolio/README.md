@@ -1,18 +1,18 @@
-# Contents
-1. [TL;DR](#-tldr-)
-2. [Introduction](#introduction-)
-    - [Key Concepts](#key-concepts)
-3. [PRM & the Arm Robot](#prm--the-arm-robot-)
-4. [RRT](#rrt--the-very-very-very-abstract--symbolic-car-robot-)
-5. [Code Design & Implementation](#code-design--implementation-%EF%B8%8F)
-    - [PRM Implementation](#prm-implementation)
-    - [RRT Implementation](#rrt-implementation)
-6. [Testing](#testing-)
-    - [PRM Demo](#prm-demo)
-    - [RRT Testing](#rrt-testing)
-7. [Conclusion](#conclusion-)
+# Contents 📋
+1. [TL;DR 💡](#-tldr-)
+2. [Introduction 🌱](#introduction-)
+    - [Key Concepts 🌟](#key-concepts-)
+3. [PRM & the Arm Robot 🤖](#prm--the-arm-robot-)
+4. [RRT & the (very very very abstract & symbolic) Car Robot 🛼](#rrt--the-very-very-very-abstract--symbolic-car-robot-)
+5. [Code Design & Implementation 🛠️](#code-design--implementation-%EF%B8%8F)
+    - [PRM Implementation 🌟](#prm-implementation-)
+    - [RRT Implementation 🌟](#rrt-implementation-)
+6. [Testing 🔍](#testing-)
+    - [PRM Demo 🌟](#prm-demo-)
+    - [RRT Testing 🌟](#rrt-testing-)
+7. [Conclusion 🌿](#conclusion-)
 
-# 💡 TL;DR 💡
+# TL;DR 💡
 This report is running so much longer than I expected it to so here are a few salient points:
 
 - PRM & RRT algorithms for robotic motion planning
@@ -25,14 +25,14 @@ This report is running so much longer than I expected it to so here are a few sa
 
 - COSC 76 is very fun. If you're at Dartmouth, take it!
 
-# Introduction 🌱 
+# Introduction 🌱
 In fall of 2023 I took COSC 76/COGS 44: Artificial Intelligence at Dartmouth College, where I read about and implemented various algorithms designed to solve computational problems vaguely related to artificial intelligence. This here is a cleaned-up version of our final project: **PRM & RRT for robotic motion planning** 🔧🤖.
 
 It is currently spring of 2024, and since then I've taken an actual algorithms class. Though I find myself wishing I'd waited until after I've learned algorithms to take Artificial Intelligence (in hindsight there's a lot more I could've learned if only I had an understanding of more basic things to scaffold upon), this nevertheless remains a part of my academic journey that has inspired me very much, and I'm quite proud of it. I would love to do something algorithms-related in the future.
 
 My original code and report can be found [here](https://github.com/yawenx2004/dart-cosc076/tree/main/ps7-prm-rrt).
 
-### Key Concepts
+### Key Concepts 🌟
 **Robotic motion planning** is an artificial intelligence problem where we generate a sequence of valid configurations that allows a robot to move from an initial state to a goal state in an environment, while avoiding collisions. Two examples of robotic motion planning algorithms are PRM and RRT, both of which involve randomly sampling a configuration space.
 
 - **Probabilistic roadmap (PRM):** connects randomly-sampled valid configurations in the environment and connects them to form a network, then searches through the network to find a path.
@@ -76,7 +76,7 @@ As of 22 April 2024 I have rewritten the code from last fall; you can find them 
 
 **Note:** We are using the intersects() function of the shapely library to check for collisions, and using matplotlib to visualize. Search/solve is done through a simple BFS.
 
-### PRM Implementation
+### PRM Implementation 🌟
 Our PRM has three parts—ArmRobot.py to represent the arm robot, PRM.py which houses the actual PRM implementation, and PRMSolver.py which uses BFS to search the PRM graph and find a solution.
 
 #### ArmRobot.py:
@@ -110,11 +110,11 @@ PRM *done*! 🎉
 
 Onto RRT.
 
-### RRT Implementation
+### RRT Implementation 🌟
 🚧
 
-# Testing 🐞🔍
-### PRM Demo
+# Testing 🔍
+### PRM Demo 🌟
 In test_prm.py I have written several test cases for an 2R planar robot and a 4R planar robot (this one with environments of varying difficulty). To select the test case, just comment out lines as specified in the Python file. When you run test_prm.py in its current form you should see, aside from the solution in the console, a matplotlib animation of an arm moving from the start to the goal configuration.
 
 First, let's take a look at the 2R test case. Here, configurations are 2-vectors and can therefore be mapped onto 2D space. Below is the graph that represents the PRM roadmap. Vertices represent possible configurations (red = start; yellow = goal), and edges represent the possibility of going between two configurations without collision.
@@ -146,7 +146,7 @@ A visualization of the problem—
 
 **Note:** This test case runs in about 15 seconds if you choose to visualize, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
 
-### RRT Testing
+### RRT Testing 🌟
 🚧
 
 # Conclusion 🌿
