@@ -1,9 +1,9 @@
 # Contents
 1. [TL;DR](#-tldr-)
-2. [Introduction](#-introduction-)
+2. [Introduction](#introduction-)
     - [Key Concepts](#key-concepts)
-3. [PRM & the Arm Robot](#prm--the-arm-robot)
-4. [RRT](#rrt)
+3. [PRM & the Arm Robot](#prm--the-arm-robot-)
+4. [RRT](#rrt-)
 5. [Code Design & Implementation](#code-design--implementation)
     - [PRM Implementation](#prm-implementation)
     - [RRT Implementation](#rrt-implementation)
@@ -25,7 +25,7 @@ This report is running so much longer than I expected it to so here are a few sa
 
 - COSC 76 is very fun. If you're at Dartmouth, take it!
 
-# 🌱 Introduction 🌱 
+# Introduction 🌱 
 In fall of 2023 I took COSC 76/COGS 44: Artificial Intelligence at Dartmouth College, where I read about and implemented various algorithms designed to solve computational problems vaguely related to artificial intelligence. This here is a cleaned-up version of our final project: **PRM & RRT for robotic motion planning** 🔧🤖.
 
 It is currently spring of 2024, and since then I've taken an actual algorithms class. Though I find myself wishing I'd waited until after I've learned algorithms to take Artificial Intelligence (in hindsight there's a lot more I could've learned if only I had an understanding of more basic things to scaffold upon), this nevertheless remains a part of my academic journey that has inspired me very much, and I'm quite proud of it. I would love to do something algorithms-related in the future.
@@ -43,7 +43,7 @@ Both of these algorithms involve **discretizing a continuous search space**, a t
 
 Now that we've defined the algorithms, let's move on to the specific implementations in this project.
 
-# PRM & the Arm Robot
+# PRM & the Arm Robot 🔧🤖
 
 - **Input:**
 
@@ -57,7 +57,7 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 
 - **Output**: sequence of valid arm configurations that allow the arm to move from start to goal, without bumping into obstacles
 
-# RRT
+# RRT 🚗
 
 - **Input:**
 
