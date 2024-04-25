@@ -16,12 +16,9 @@
 This report is running so much longer than I expected it to so here are a few salient points:
 
 - PRM & RRT algorithms for robotic motion planning
-
 - While implementing RRT I encountered the common problem of the search tree getting stuck in various places due to obstacles and narrow passages. To address this, I implementing an **unstuck()** function which briefly samples points in different directions to continue exploration. 🌟
     - See [RRT Testing](#rrt-testing) for details; this is probably the most interesting part of the report.
-
 - Testing has indicated that the above fix works!
-
 - COSC 76 is very fun. If you're at Dartmouth, take it!
 
 # Introduction 🌱
@@ -35,7 +32,6 @@ My original code and report can be found [here](https://github.com/yawenx2004/da
 **Robotic motion planning** is an artificial intelligence problem where we generate a sequence of valid configurations that allows a robot to move from an initial state to a goal state in an environment, while avoiding collisions. Two examples of robotic motion planning algorithms are PRM and RRT, both of which involve randomly sampling a configuration space.
 
 - **Probabilistic roadmap (PRM):** connects randomly-sampled valid configurations in the environment and connects them to form a network, then searches through the network to find a path.
-
 - **Rapidly-exploring Random Tree (RRT):** builds a tree by randomly sampling points in the configuration space; each new randomly-sampled node is connected to the nearest node on the tree.
 
 Both of these algorithms involve **discretizing a continuous search space**, a topic I first encountered in this class and have been fascinated by ever since.
@@ -49,7 +45,6 @@ Now that we've defined the algorithms, let's move on to the specific implementat
     - **obstacles**, represented as 2D polygons
     - **start configuration**, represented as an n-array, each element indicating the angle of a section of the robotic arm
     - **goal configuration**, similar to start configuration
-
 - **Output**: sequence of valid arm configurations that allow the arm to move from start to goal, without bumping into obstacles
 
 # RRT & the (very very very abstract & symbolic) Car Robot 🛼
@@ -60,7 +55,6 @@ Imagine the car is just a dot.
     - **environment**, here a 2D plane filled with obstacles represented as 2D polygons
     - **start point**, somewhere within the environment
     - **goal point**, somewhere else within the environment
-
 - **Output:** a path from the start to the end that avoids collision with obstacles
 
 # Code Design & Implementation 🛠️
@@ -74,23 +68,17 @@ Our PRM has three parts—ArmRobot.py to represent the arm robot, PRM.py which h
 #### ArmRobot.py:
 
 - **__init__** takes parameters num_joints (number of joints/links the robotic arm has) and start_config (starting angle for each joint); initially sets self.config to start_config
-
 - **forward_kinematics()** calculates the Cartesian location of each joint given the angle specified in its configuration
-
 - **collids_with()** uses the intersects() function of the shapely library to check for collision between a given configuration and a given set of obstacles
 
 #### PRM.py:
 
 - **__init__** takes an ArmRobot instance, a goal configuration, and a list of obstacles as its parameters, as well as values k (max edges each vertex can have in the roadmap) and num_samples (number of vertices the roadmap will have)
-
 - **sample()** randomly selects valid configurations (that is, configurations that do not result in the arm passing through obstacles); these form the vertices of the roadmap
-
 - **add_edges()** loops through the configurations sampled, and for each vertex v it looks at k nearest neighbors and adds an edge from v to its neighbor if you can go from v to that neighbor without colliding into an obstacle
     - **get_neighbors()** returns k nearest neighbors using a KD tree
     - **is_collision()** checks for collisions using linear interpolation
-
 - **get_roadmap()** runs sample(), runs add_edges(), thus generating and returning the PRM roadmap (alongside the start and goal configurations)
-
 - **visualize()** animates the path—if we find one—by plotting frame-by-frame each step in the path
 
 #### PRMSolver.py:
