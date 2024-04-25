@@ -18,7 +18,6 @@ This report is running so much longer than I expected it to so here are a few sa
 - PRM & RRT algorithms for robotic motion planning
 
 - While implementing RRT I encountered the common problem of the search tree getting stuck in various places due to obstacles and narrow passages. To address this, I implementing an **unstuck()** function which briefly samples points in different directions to continue exploration. 🌟
-
     - See [RRT Testing](#rrt-testing) for details; this is probably the most interesting part of the report.
 
 - Testing has indicated that the above fix works!
@@ -46,7 +45,6 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 # PRM & the Arm Robot 🤖
 
 - **Input:**
-
     - **robot**, in this case a 2D planar arm consisting of n lines
     - **obstacles**, represented as 2D polygons
     - **start configuration**, represented as an n-array, each element indicating the angle of a section of the robotic arm
@@ -59,7 +57,6 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 Imagine the car is just a dot.
 
 - **Input:**
-
     - **environment**, here a 2D plane filled with obstacles represented as 2D polygons
     - **start point**, somewhere within the environment
     - **goal point**, somewhere else within the environment
@@ -89,9 +86,7 @@ Our PRM has three parts—ArmRobot.py to represent the arm robot, PRM.py which h
 - **sample()** randomly selects valid configurations (that is, configurations that do not result in the arm passing through obstacles); these form the vertices of the roadmap
 
 - **add_edges()** loops through the configurations sampled, and for each vertex v it looks at k nearest neighbors and adds an edge from v to its neighbor if you can go from v to that neighbor without colliding into an obstacle
-
     - **get_neighbors()** returns k nearest neighbors using a KD tree
-
     - **is_collision()** checks for collisions using linear interpolation
 
 - **get_roadmap()** runs sample(), runs add_edges(), thus generating and returning the PRM roadmap (alongside the start and goal configurations)
