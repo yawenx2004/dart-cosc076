@@ -48,11 +48,8 @@ Now that we've defined the algorithms, let's move on to the specific implementat
 - **Input:**
 
     - **robot**, in this case a 2D planar arm consisting of n lines
-
     - **obstacles**, represented as 2D polygons
-
     - **start configuration**, represented as an n-array, each element indicating the angle of a section of the robotic arm
-
     - **goal configuration**, similar to start configuration
 
 - **Output**: sequence of valid arm configurations that allow the arm to move from start to goal, without bumping into obstacles
@@ -64,9 +61,7 @@ Imagine the car is just a dot.
 - **Input:**
 
     - **environment**, here a 2D plane filled with obstacles represented as 2D polygons
-
     - **start point**, somewhere within the environment
-
     - **goal point**, somewhere else within the environment
 
 - **Output:** a path from the start to the end that avoids collision with obstacles
