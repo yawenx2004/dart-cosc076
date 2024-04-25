@@ -95,11 +95,14 @@ Onto RRT.
 ### 🌟 PRM Demo 🌟
 In test_prm.py I have written several test cases for an 2R planar robot and a 4R planar robot (this one with environments of varying difficulty). To select the test case, just comment out lines as specified in the Python file. When you run test_prm.py in its current form you should see, aside from the solution in the console, a matplotlib animation of an arm moving from the start to the goal configuration.
 
-First, let's take a look at the 2R test case. Here, configurations are 2-vectors and can therefore be mapped onto 2D space. Below is the graph that represents the PRM roadmap. Vertices represent possible configurations (red = start; yellow = goal), and edges represent the possibility of going between two configurations without collision.
+First, let's take a look at the 2R test case. In the 2R case, configurations are 2-vectors and can therefore be mapped onto 2D space. Below you can see the graph that represents the PRM roadmap. Vertices represent possible configurations (red = start; yellow = goal), and edges represent the possibility of going between two configurations without collision.
+
+The roadmap PRM uses to search through:
 
 ![Figure 1.](figures/prm-2r-samples.png)
 
-This is the map PRMSolver uses BFS to search through. The shortest path from the red vertex to the yellow vertex represents the solution.
+The shortest path from the red vertex to the yellow vertex represents the solution.
+
 ```
 Solution found after searching 4414 nodes!
 ---
@@ -107,7 +110,7 @@ PATH: [(85, 0), (110.29536799915928, 161.16394618103706), (200, 350)]
 LENGTH: 3
 ```
 
-Here's the same problem, visualized another way. Here, red polygons represent obstacles, the red configuration represents the start configuration, the yellow configuration represents the goal configuration, and the blue ones represent every configuration sampled. This is another way to look at the roadmap.
+Let's look at the same problem visualized another way. Here, red polygons represent obstacles, the red configuration represents the start configuration, the yellow configuration represents the goal configuration, and the blue ones represent every configuration sampled.
 
 ![Figure 2.](figures/prm-2r-configs.png)
 
@@ -119,11 +122,12 @@ Solution found after searching 938 nodes!
 PATH: [(0, 0, 0, 300), (132.56911930250288, 218.5923196635714, 219.15960059395246, 237.24818972150314), (210, 330, 90, 75)]
 LENGTH: 3
 ```
+
 A visualization of the problem—
 
 ![Figure 3.](figures/prm-4r-hardest-configs.png)
 
-**Note:** This test case runs in about 15 seconds if you choose to visualize, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
+**Note:** This test case runs in about 15 seconds if you choose not to visualize the output, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
 
 ### 🌟 RRT Testing 🌟
 🚧
