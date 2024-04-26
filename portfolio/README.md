@@ -93,8 +93,9 @@ Onto RRT.
 
 # Testing 🔍
 ### 🌟 PRM Demo 🌟
-In test_prm.py I have written several test cases for an 2R planar robot and a 4R planar robot (this one with environments of varying difficulty). To select the test case, just comment out lines as specified in the Python file. When you run test_prm.py in its current form you should see, aside from the solution in the console, a matplotlib animation of an arm moving from the start to the goal configuration.
+In test_prm.py I have written several test cases for an 2R planar robot and a 4R planar robot (this one with environments of varying difficulty). To select the test case, just comment out lines as specified in the test_prm.py file. If you run test_prm.py without making any changes, you should see, alongside from the solution in the console, a matplotlib animation of an arm moving from the start to the goal configuration.
 
+#### Case 1: 2R arm robot
 First, let's take a look at the 2R test case. In the 2R case, configurations are 2-vectors and can therefore be mapped onto 2D space. Below you can see the graph that represents the PRM roadmap. Vertices represent possible configurations (red = start; yellow = goal), and edges represent the possibility of going between two configurations without collision.
 
 The roadmap PRM uses to search through:
@@ -114,6 +115,7 @@ Let's look at the same problem visualized another way. Here, red polygons repres
 
 ![Figure 2.](figures/prm-2r-configs.png)
 
+#### Case 2: 4R arm robot
 Now let's take a look at higher-dimensional problems. For the hardest 4R problem (environment and generated configurations pictured below), PRM returned the following output—
 
 ```
