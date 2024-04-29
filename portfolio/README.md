@@ -100,7 +100,7 @@ RRT also involves a BFS solver. Let's break down the other functions here. Visua
 
 #### RRT.py
 
-- **__init__()**  takes as parameters start, goal, environment, and step size defaulted to 5; we also initialize empty arrays for vertices and edges for the RRT tree
+- **__init__()**  takes as parameters start, goal, environment, and step_size defaulted to 5; we also initialize empty arrays for vertices and edges for the RRT tree
     - **start** and **goal** are represented as points (x, y)
     - **env** is represented as a two-tuple ((width, height), [array of obstacles])
         - each obstacle is represented as an array of points, each point representing the coordinates for one corner of the obstacle
@@ -160,7 +160,25 @@ A visualization of the problem—
 **Note:** This test case runs in about 15 seconds if you choose not to visualize the output, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
 
 ### 🌟 RRT Testing 🌟
-🚧
+For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment—it instead clusters around the goal and takes too long to explore the environment—we test each environment on RRT and RRT_unstuck.
 
+#### Environment 0: no obstacle
+'''
+| trial  | RRT                                 | RRT_unstuck                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1      |
+| 2      |
+| 3      |
+| 4      |
+| 5      |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| mean   | 
+| median |
+'''
+#### Environment 1: low wall
+#### Environment 2: high wall
+#### Environment 3: two narrow passages
+#### Environment 4: multiple narrow passages
 # Conclusion 🌿
 🚧
