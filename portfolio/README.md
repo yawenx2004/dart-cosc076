@@ -162,7 +162,9 @@ A visualization of the problem—
 ### 🌟 RRT Testing 🌟
 For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment—it instead clusters around the goal and takes too long to explore the environment—we test each environment on RRT and RRT_unstuck.
 
-#### Environment 0: no obstacle
+Control clustering:
+
+#### Environment 0: no obstacle 🚧
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
@@ -176,9 +178,81 @@ For RRT testing we have 5 environments pictured below. Since the control fails t
 | mean   | 
 | median |
 ```
-#### Environment 1: low wall
-#### Environment 2: high wall
-#### Environment 3: two narrow passages
-#### Environment 4: multiple narrow passages
+
+Sample RRT solution:
+Sample RRT_unstuck solution:
+
+#### Environment 1: low wall 🚧
+```
+| trial  | RRT                                 | RRT_unstuck                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1      |
+| 2      |
+| 3      |
+| 4      |
+| 5      |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| mean   | 
+| median |
+```
+
+Sample RRT solution:
+Sample RRT_unstuck solution:
+
+#### Environment 2: high wall 🚧
+```
+| trial  | RRT                                 | RRT_unstuck                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1      |
+| 2      |
+| 3      |
+| 4      |
+| 5      |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| mean   | 
+| median |
+```
+
+Sample RRT solution:
+Sample RRT_unstuck solution:
+
+#### Environment 3: two narrow passages 🚧
+```
+| trial  | RRT                                 | RRT_unstuck                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1      |
+| 2      |
+| 3      |
+| 4      |
+| 5      |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| mean   | 
+| median |
+```
+
+Sample RRT solution:
+Sample RRT_unstuck solution:
+
+#### Environment 4: multiple narrow passages 🚧
+```
+| trial  | RRT                                 | RRT_unstuck                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1      |
+| 2      |
+| 3      |
+| 4      |
+| 5      |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| mean   | 
+| median |
+```
+
+Sample RRT solution:
+Sample RRT_unstuck solution:
+
 # Conclusion 🌿
 🚧
