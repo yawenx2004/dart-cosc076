@@ -7,7 +7,7 @@ from RRT import RRT
 
 
 class RRT_control(RRT):
-    def __init__(self, start, goal, env, step_size=10):
+    def __init__(self, start, goal, env, step_size=5):
         super().__init__(start, goal, env, step_size)
 
     def select_vertex(self):
