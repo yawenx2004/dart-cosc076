@@ -72,13 +72,13 @@ Our PRM has three parts—ArmRobot.py to represent the arm robot, PRM.py which h
 
 #### ArmRobot.py:
 
-- **__init__** takes parameters num_joints (number of joints/links the robotic arm has) and start_config (starting angle for each joint); initially sets self.config to start_config
+- **__init__()** takes parameters num_joints (number of joints/links the robotic arm has) and start_config (starting angle for each joint); initially sets self.config to start_config
 - **forward_kinematics()** calculates the Cartesian location of each joint given the angle specified in its configuration
 - **collids_with()** uses the intersects() function of the shapely library to check for collision between a given configuration and a given set of obstacles
 
 #### PRM.py:
 
-- **__init__** takes an ArmRobot instance, a goal configuration, and a list of obstacles as its parameters, as well as values k (max edges each vertex can have in the roadmap) and num_samples (number of vertices the roadmap will have)
+- **__init__()** takes an ArmRobot instance, a goal configuration, and a list of obstacles as its parameters, as well as values k (max edges each vertex can have in the roadmap) and num_samples (number of vertices the roadmap will have)
 - **sample()** randomly selects valid configurations (that is, configurations that do not result in the arm passing through obstacles); these form the vertices of the roadmap
 - **add_edges()** loops through the configurations sampled, and for each vertex v it looks at k nearest neighbors and adds an edge from v to its neighbor if you can go from v to that neighbor without colliding into an obstacle
     - **get_neighbors()** returns k nearest neighbors using a KD tree
@@ -100,14 +100,24 @@ RRT also involves a BFS solver. Let's break down the other functions here. Visua
 
 #### RRT.py
 
-- **__init**  takes as parameters start, goal, environment, and step size defaulted to 5; we also initialize empty arrays for vertices and edges for the RRT tree
+- **__init__()**  takes as parameters start, goal, environment, and step size defaulted to 5; we also initialize empty arrays for vertices and edges for the RRT tree
     - **start** and **goal** are represented as points (x, y)
     - **env** is represented as a two-tuple ((width, height), [array of obstacles])
         - each obstacle is represented as an array of points, each point representing the coordinates for one corner of the obstacle
 - **grow_tree()** grows the RRT tree until it reaches the goal; it does so by 1) select_vertex(), 2) randomly generating a direction theta, 3) and add_vertex()
     - **select_vertex()** loops through all vertices on the tree and returns the one with the minimum Euclidean distance from the goal
     - **add_vertex()** takes as parameters the vertex as returned by select_vertex and the aforementioned random theta, then calculates a new vertex step_size from the selected vertex in the direction of theta; if the path from the selected vertex to the new vertex does _not_ intersect any obstacle, it adds the new vertex to the tree and returns True for bookkeeping; otherwise it returns False
-- **solve{}** just grows the tree and runs BFS on it to get the path
+- **solve()** just grows the tree and runs BFS on it to get the path
+
+#### RRT_unstuck.py
+Subclass of RRT. Detects when RRT gets stuck, and when stuck handles it by temporarily shifting the goal so the tree temporarily explores a new direction.
+
+- **__init__()**, in addition to RRT's __init__(), also creates attributes real_goal (to keep track of the actual goal when the goal shifts) and fake_goal_moves and real_goal_moves (to keep track of the number of moves made in the direction of either the actual goal or a temporary goal)
+- **stuck()** returns True when RRT gets stuck; it defines stuck-ness as continuously growing new vertices sourced from the same vertex, and therefore takes the most recent 20 vertices in the tree and checks if there exists a vertex that appears in at least 10 edges
+- **grow_tree()** is changed to incorporate **stuck**—with every new vertex added, we check whether or not RRT has gotten stuck; if stuck, we randomly generates a new goal and grows 20 new vertices in the direction of that goal before reverting back to the original goal
+
+#### RRT_control.py
+Here we just change **select_vertex()** to return a random vertex instead of the vertex closest to the goal. We use this as a control to test the effectiveness of our RRT implementations.
 
 # Testing 🔍
 ### 🌟 PRM Demo 🌟
