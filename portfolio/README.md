@@ -26,7 +26,10 @@ In fall of 2023 I took COSC 76/COGS 44: Artificial Intelligence at Dartmouth Col
 
 It is currently spring of 2024, and since then I've taken an actual algorithms class. Though I find myself wishing I'd waited until after I've learned algorithms to take Artificial Intelligence (in hindsight there's a lot more I could've learned if only I had an understanding of more basic things to scaffold upon), this nevertheless remains a part of my academic journey that has inspired me very much, and I'm quite proud of it. I would love to do something algorithms-related in the future.
 
-My original code and report can be found [here](https://github.com/yawenx2004/dart-cosc076/tree/main/ps7-prm-rrt).
+My original code and report can be found [here](https://github.com/yawenx2004/dart-cosc076/tree/main/ps7-prm-rrt). Updates are as below—
+- Reduced repetition
+- Restructured RRT so that RRT_unstuck has as few changed functions from RRT as possible, ensuring the changes reflect (and _only_ reflect) how exactly the unstuck process works
+- Ensured RRT_unstuck returns to using the original goal for guidance for a useful chunk of time instead of constantly changing goals
 
 ### 🌟 Key Concepts 🌟
 **Robotic motion planning** is an artificial intelligence problem where we generate a sequence of valid configurations that allows a robot to move from an initial state to a goal state in an environment, while avoiding collisions. Two examples of robotic motion planning algorithms are PRM and RRT, both of which involve randomly sampling a configuration space.
@@ -63,6 +66,8 @@ As of 22 April 2024 I have rewritten the code from last fall; you can find them 
 **Note:** We are using the intersects() function of the shapely library to check for collisions, and using matplotlib to visualize. Search/solve is done through a simple BFS.
 
 ### 🌟 PRM Implementation 🌟
+Code [here](https://github.com/yawenx2004/dart-cosc076/tree/main/portfolio/PRM).
+
 Our PRM has three parts—ArmRobot.py to represent the arm robot, PRM.py which houses the actual PRM implementation, and PRMSolver.py which uses BFS to search the PRM graph and find a solution.
 
 #### ArmRobot.py:
@@ -89,7 +94,20 @@ PRM *done*! 🎉
 Onto RRT.
 
 ### 🌟 RRT Implementation 🌟
-🚧
+Code [here](https://github.com/yawenx2004/dart-cosc076/tree/main/portfolio/RRT).
+
+RRT also involves a BFS solver. Let's break down the other functions here. Visualization done with matplotlib.
+
+#### RRT.py
+
+- **__init**  takes as parameters start, goal, environment, and step size defaulted to 5; we also initialize empty arrays for vertices and edges for the RRT tree
+    - **start** and **goal** are represented as points (x, y)
+    - **env** is represented as a two-tuple ((width, height), [array of obstacles])
+        - each obstacle is represented as an array of points, each point representing the coordinates for one corner of the obstacle
+- **grow_tree()** grows the RRT tree until it reaches the goal; it does so by 1) select_vertex(), 2) randomly generating a direction theta, 3) and add_vertex()
+    - **select_vertex()** loops through all vertices on the tree and returns the one with the minimum Euclidean distance from the goal
+    - **add_vertex()** takes as parameters the vertex as returned by select_vertex and the aforementioned random theta, then calculates a new vertex step_size from the selected vertex in the direction of theta; if the path from the selected vertex to the new vertex does _not_ intersect any obstacle, it adds the new vertex to the tree and returns True for bookkeeping; otherwise it returns False
+- **solve{}** just grows the tree and runs BFS on it to get the path
 
 # Testing 🔍
 ### 🌟 PRM Demo 🌟
