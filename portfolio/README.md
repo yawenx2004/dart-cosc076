@@ -163,7 +163,7 @@ A visualization of the problem—
 For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment—it instead clusters around the goal and takes too long to explore the environment—we test each environment on RRT and RRT_unstuck.
 
 #### Environment 0: no obstacle
-'''
+```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
@@ -175,7 +175,7 @@ For RRT testing we have 5 environments pictured below. Since the control fails t
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
 | mean   | 
 | median |
-'''
+```
 #### Environment 1: low wall
 #### Environment 2: high wall
 #### Environment 3: two narrow passages
