@@ -24,15 +24,15 @@ env4 = (100, 100, [[(10, -10), (10, 60), (15, 60), (15, -10)],
 
 '''change third parameter to change test environment'''
 rrt = RRT(robot, goal, env1)
-rrt_unstuck = RRT_unstuck(robot, goal, env4)
+rrt_unstuck = RRT_unstuck(robot, goal, env3, stability=20)
 rrt_control = RRT_control(robot, goal, env0)
 
 '''comment in/out to test'''
 # rrt.grow_tree(step_by_step=True)
 # rrt.solve(visualize=True)
 
-# rrt_unstuck.grow_tree(step_by_step=True)
-# rrt_unstuck.solve(visualize=True)
+rrt_unstuck.grow_tree(step_by_step=True)
+rrt_unstuck.solve(visualize=True)
 
-rrt_control.grow_tree(step_by_step=True)
-rrt_control.solve()
+# rrt_control.grow_tree(step_by_step=True)
+# rrt_control.solve()

@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from RRT import RRT
 
 class RRT_unstuck(RRT):
-    def __init__(self, start, goal, env, step_size=5):
+    def __init__(self, start, goal, env, step_size=5, stability=10):
         super().__init__(start, goal, env, step_size)
 
         # we want to change the goal randomly whenever we get stuck
@@ -19,6 +19,8 @@ class RRT_unstuck(RRT):
         self.real_goal = goal       # keeps track of actual goal when we switch it up for unstuck purposes
         self.real_goal_moves = 0
         self.fake_goal_moves = 0    # keeps track of moves toward fake goal so you could switch back
+
+        self.stability = stability
 
     def stuck(self, threshold=10, sample_size=20):
         points = []
@@ -80,7 +82,7 @@ class RRT_unstuck(RRT):
                 # check if stuck
                 #   handle stuck by temporarily changing goal to increase exploration
                 if self.stuck and self.goal == self.real_goal:
-                    if self.real_goal_moves >= 20:
+                    if self.real_goal_moves >= self.stability:
                         self.goal = (randint(0, self.env[0]), randint(0, self.env[1]))
                         self.real_goal_moves = 0
                         print("STUCK! Goal changed temporarily.")
@@ -99,7 +101,7 @@ class RRT_unstuck(RRT):
                 else:
                     self.real_goal_moves += 1
 
-                if self.fake_goal_moves == 10:
+                if self.fake_goal_moves == self.stability:
                     print("MAX FAKE GOAL STEPS. Revert to real goal.")
                     self.goal = self.real_goal
                     self.fake_goal_moves = 0
