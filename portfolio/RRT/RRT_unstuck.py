@@ -90,7 +90,7 @@ class RRT_unstuck(RRT):
                 # plot goal
                 plt.plot(self.goal[0], self.goal[1], marker='o', linestyle='None', color='gold', markersize=8)
 
-                best_vertex = self.select_best_vertex()
+                best_vertex = self.select_vertex()
                 vertex_added = self.add_vertex(best_vertex, theta)
 
                 # change back to real goal after 10 steps
