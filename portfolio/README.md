@@ -254,8 +254,8 @@ Here is where RRT fails to find a path at all.
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     | 608         | 61
-| 2      | FAILURE     | FAILURE     | 188         | 54
+| 1      | FAILURE     | FAILURE     | 608         | 61          | 506         | 61          |
+| 2      | FAILURE     | FAILURE     | 188         | 54          | 567         | 52          |
 | 3      | FAILURE     | FAILURE     | 192         | 57
 | 4      | FAILURE     | FAILURE     | 520         | 67
 | 5      | FAILURE     | FAILURE     |
@@ -272,6 +272,10 @@ Here is where RRT fails to find a path at all.
 Sample RRT_unstuck (20) solution:
 
 ![](figures/rrt_unstuck_20_env2.png)
+
+Sample RRT_unstuck (40) solution:
+
+![](figures/rrt_unstuck_40_env2.png)
 
 #### Environment 3: two narrow passages 🚧
 ```
@@ -297,15 +301,23 @@ Sample RRT_unstuck (20) solution:
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     |
-| 2      | FAILURE     | FAILURE     |
-| 3      | FAILURE     | FAILURE     |
+| 1      | FAILURE     | FAILURE     | 1204        | 77          | 673         | 74          |
+| 2      | FAILURE     | FAILURE     | 1419        | 76          | 1945        | 80          |
+| 3      | FAILURE     | FAILURE     | 2566        | 90          |
 | 4      | FAILURE     | FAILURE     |
 | 5      | FAILURE     | FAILURE     |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | mean   | FAILURE     | FAILURE     |
 | median | FAILURE     | FAILURE     |
 ```
+
+Sample RRT_unstuck (20) solution:
+
+![](figures/rrt_unstuck_20_env4.png)
+
+Sample RRT_unstuck (40) solution:
+
+![](figures/rrt_unstuck_40_env4.png)
 
 #### Conclusion
 🚧 RRT_unstuck exploration vs. persistence tradeoff
