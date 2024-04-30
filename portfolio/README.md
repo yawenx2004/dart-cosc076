@@ -303,8 +303,8 @@ Sample RRT_unstuck (20) solution:
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 1      | FAILURE     | FAILURE     | 1204        | 77          | 673         | 74          |
 | 2      | FAILURE     | FAILURE     | 1419        | 76          | 1945        | 80          |
-| 3      | FAILURE     | FAILURE     | 2566        | 90          |
-| 4      | FAILURE     | FAILURE     |
+| 3      | FAILURE     | FAILURE     | 2566        | 90          | 1432        | 73          |
+| 4      | FAILURE     | FAILURE     |             |             | 850         | 79          |
 | 5      | FAILURE     | FAILURE     |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | mean   | FAILURE     | FAILURE     |
