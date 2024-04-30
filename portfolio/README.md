@@ -192,8 +192,9 @@ In terms of efficiency, RRT outperforms RRT_unstuck every time—it always build
 
 Sample RRT solution:
 ![](figures/rrt_env0.png)
+
 Sample RRT_unstuck solution:
-![](figure/rrt_unstuck_env0.png)
+![](figures/rrt_unstuck_env0.png)
 
 #### Environment 1: low wall 🚧
 Very quickly the advantages of RRT_unstuck behind to show up. Although RRT takes only half the time taken by RRT_unstuck to find a solution, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to only grow points ad infinitum in the same tiny section of the search space.
