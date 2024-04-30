@@ -190,6 +190,7 @@ In terms of efficiency, RRT outperforms RRT_unstuck every time—it always build
 ```
 
 Sample RRT solution:
+[](figures/rrt_env0.png)
 Sample RRT_unstuck solution:
 
 #### Environment 1: low wall 🚧
