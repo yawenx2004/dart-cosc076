@@ -112,7 +112,7 @@ RRT also involves a BFS solver. Let's break down the other functions here. Visua
 #### RRT_unstuck.py
 Subclass of RRT. Detects when RRT gets stuck, and when stuck handles it by temporarily shifting the goal so the tree temporarily explores a new direction.
 
-- **__init__()**, in addition to RRT's __init__(), also creates attributes real_goal (to keep track of the actual goal when the goal shifts) and fake_goal_moves and real_goal_moves (to keep track of the number of moves made in the direction of either the actual goal or a temporary goal)
+- **__init__()**, in addition to RRT's __init__(), also creates attributes real_goal (to keep track of the actual goal when the goal shifts), fake_goal_moves and real_goal_moves (to keep track of the number of moves made in the direction of either the actual goal or a temporary goal), and stability (minimum amount of steps toward each goal before we shift goals again)
 - **stuck()** returns True when RRT gets stuck; it defines stuck-ness as continuously growing new vertices sourced from the same vertex, and therefore takes the most recent 20 vertices in the tree and checks if there exists a vertex that appears in at least 10 edges
 - **grow_tree()** is changed to incorporate **stuck**—with every new vertex added, we check whether or not RRT has gotten stuck; if stuck, we randomly generates a new goal and grows 20 new vertices in the direction of that goal before reverting back to the original goal
 
@@ -160,7 +160,7 @@ A visualization of the problem—
 **Note:** This test case runs in about 15 seconds if you choose not to visualize the output, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
 
 ### 🌟 RRT Testing 🌟
-For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment within a reasonable time—the tree clusters heavily around the starting point and takes very long to explore the environment—we test each environment on RRT and RRT_unstuck.
+For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment within a reasonable time—the tree clusters heavily around the starting point and takes very long to explore the environment—we test each environment on RRT and RRT_unstuck (with stability 20 and 40).
 
 Unfortunately I do not have records of runtime. Especially with matplotlib visualization, though, running RRT could take quite a while—environment 4 problems have taken RRT_stuck() 🚧 minutes to solve.
 
@@ -171,57 +171,63 @@ Control clustering, after about 10 minutes (it's not much different after 2 hour
 ![](figures/rrt_control_env0.png)
 
 #### Environment 0: no obstacle
-In terms of efficiency, RRT outperforms RRT_unstuck every time—it always builds the tree faster, using fewer vertices. RRT is on average 25% faster than RRT_unstuck. This is a not-insignificant advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
+In terms of efficiency, RRT outperforms RRT_unstuck almost every time—it builds the tree faster, using fewer vertices. RRT is on average 58% faster than RRT_unstuck (stability 40). This is quite significant an advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
+
+RRT_unstuck (stability 40) also wins over RRT_unstuck (stability 20)—the more stable RRT is less easily persuaded to change goals, and therefore has an advantage in an obstacle-less environment where the best path is just straight toward the obstacle.
 
 ```
-| trial  | RRT                                 | RRT_unstuck                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      | 67               | 33               | 82               | 35               |
-| 2      | 64               | 31               | 77               | 33               |
-| 3      | 49               | 28               | 96               | 40               |
-| 4      | 62               | 30               | 90               | 36               |
-| 5      | 49               | 26               | 87               | 30               |
-| 6      | 74               | 34               | 82               | 30               |
-| 7      | 67               | 32               | 74               | 32               |
-| 8      | 53               | 28               | 63               | 30               |
-| 9      | 67               | 34               | 73               | 27               |
-| 10     | 59               | 34               | 98               | 34               |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 61.1             | 31               | 82.2             | 32.7             |
-| median | 61.5             | 31.5             | 82               | 32.5             |
+| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
+| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1      | 67          | 33          | 111         | 32          | 154         | 30          |
+| 2      | 64          | 31          | 110         | 31          | 79          | 30          |
+| 3      | 49          | 28          | 113         | 31          | 94          | 32          |
+| 4      | 62          | 30          | 112         | 27          | 95          | 29          |
+| 5      | 49          | 26          | 77          | 34          | 105         | 31          |
+| 6      | 74          | 34          | 112         | 29          | 89          | 28          |
+| 7      | 67          | 32          | 114         | 30          | 101         | 36          |
+| 8      | 53          | 28          | 90          | 38          | 73          | 30          |
+| 9      | 67          | 34          | 124         | 33          | 104         | 33          |
+| 10     | 59          | 34          | 85          | 41          | 70          | 30          |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| mean   | 61.1        | 31          | 104.8       | 32.6        | 96.4        | 30.9        |
+| median | 61.5        | 31.5        | 111.5       | 31          | 94.5        | 30          |
 ```
 
 Sample RRT solution:
 
 ![](figures/rrt_env0.png)
 
-Sample RRT_unstuck solution:
+Sample RRT_unstuck (20) solution:
 
-![](figures/rrt_unstuck_env0.png)
+🚧
+
+Sample RRT_unstuck (40) solution:
+
+🚧
 
 #### Environment 1: low wall 🚧
-Very quickly the advantages of RRT_unstuck behind to show up. Although RRT takes only half the time taken by RRT_unstuck to find a solution, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to only grow points ad infinitum in the same tiny section of the search space.
+Very quickly the advantages of RRT_unstuck begin to show. Although RRT takes about half the time taken by RRT_unstuck to find a path, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to grow points ad infinitum in the same tiny section of the search space. It gets stuck forever, effectively. These are the trials labeled as FAILURE in the table below.
 
-Below I've included example solutiosn from RRT and RRT_unstuck, as well as an instance of RRT failure. As we can see, RRT_unstuck can create unnecessary branches, resulting in longer runtimes. By contrast, RRT very stubbornly sticks to growing the tree from the vertex closest to the goal and therefore can lead to failure.
+In this environment RRT_unstuck (stability 40) wins over RRT_unstuck (stability 20), a reversal from what we have in the last environment. In this environment, since there is an obstacle, there are frequent needs to handle getting stuck by shifting goals. RRT_unstuck (stability 40) sticks with a new goal for longer, therefore potentially making more moves in unproductive directions.
 
 ```
-| trial  | RRT                                 | RRT_unstuck                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      | 78               | 35               | 130              | 33               |
-| 2      | 67               | 28               | 152              | 38               |
-| 3      | FAILURE          | FAILURE          | 105              | 38               |
-| 4      | FAILURE          | FAILURE          | 123              | 47               |
-| 5      | 50               | 30               | 135              | 45               |
-| 6      | FAILURE          | FAILURE          | 153              | 39               |
-| 7      | FAILURE          | FAILURE          | 153              | 43               |
-| 8      | FAILURE          | FAILURE          | 181              | 50               |
-| 9      | FAILURE          | FAILURE          | 96               | MISSING DATA     | <= accidentally exited program early
-| 10     | 65               | 33               | 161              | 51               |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 65*              | 31.5*            | 138.9            | 42.667           |
-| median | 66*              | 31.5*            | 144              | 43               |
+| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
+| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1      | 78          | 35          | 91          | 41          | 175         | 42          |
+| 2      | 67          | 28          | 86          | 39          | 260         | 55          |
+| 3      | FAILURE     | FAILURE     | 189         | 43          | 139         | 34          |
+| 4      | FAILURE     | FAILURE     | 182         | 41          | 140         | 47          |
+| 5      | 50          | 30          | 120         | 35          | 123         | 35          |
+| 6      | FAILURE     | FAILURE     | 229         | 53          | 242         | 38          |
+| 7      | FAILURE     | FAILURE     | 85          | 39          | 153         | 47          |
+| 8      | FAILURE     | FAILURE     | 88          | 34          | 203         | 36          |
+| 9      | FAILURE     | FAILURE     | 70          | 33          | 92          | 43          |
+| 10     | 65          | 33          | 131         | 35          | 90          | 37          |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| mean   | 65*         | 31.5*       | 127.1       | 39.3        | 161.7       | 41.4        |
+| median | 66*         | 31.5*       | 105.5       | 39          | 139.5       | 40          |
 
 *technically infinite, given multiple instances of failure
 ```
@@ -230,87 +236,83 @@ Sample RRT solution:
 
 ![](figures/rrt_env1.png)
 
-Sample RRT_unstuck solution:
+Sample RRT_unstuck (20) solution:
 
-![](figures/rrt_unstuck_env1_slow.png)
+🚧
+
+Sample RRT_unstuck (40) solution:
+
+🚧
 
 RRT failure:
 
 ![](figures/rrt_env1_FAILURE.png)
 
 #### Environment 2: high wall 🚧
+Here is where RRT fails to find a path at all.
 ```
-| trial  | RRT                                 | RRT_unstuck                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      |
-| 2      |
-| 3      |
-| 4      |
-| 5      |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 
-| median |
+| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
+| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1      | FAILURE     | FAILURE     | 608         | 61
+| 2      | FAILURE     | FAILURE     | 188         | 54
+| 3      | FAILURE     | FAILURE     | 192         | 57
+| 4      | FAILURE     | FAILURE     | 520         | 67
+| 5      | FAILURE     | FAILURE     |
+| 6      | FAILURE     | FAILURE     |
+| 7      | FAILURE     | FAILURE     |
+| 8      | FAILURE     | FAILURE     |
+| 9      | FAILURE     | FAILURE     | 
+| 10     | FAILURE     | FAILURE     |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| mean   | FAILURE     | FAILURE     |
+| median | FAILURE     | FAILURE     |
 ```
-
-Sample RRT solution:
-Sample RRT_unstuck solution:
 
 #### Environment 3: two narrow passages
-Only RRT_unstuck is able to solve environment 3. It usually grows a tree of about 500 vertices, but there are two outliers where we have trees with over 1000 vertices. I have displayed sample fast and slow solutions below the table.
-
 ```
-| trial  | RRT                                 | RRT_unstuck                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      | FAILURE          | FAILURE          | 398              | 58               |
-| 2      | FAILURE          | FAILURE          | 431              | 62               |
-| 3      | FAILURE          | FAILURE          | 419              | 62               |
-| 4      | FAILURE          | FAILURE          | 498              | 67               |
-| 5      | FAILURE          | FAILURE          | 1144             | 46               |
-| 6      | FAILURE          | FAILURE          | 756              | 55               |
-| 7      | FAILURE          | FAILURE          | 1647             | 57               |
-| 8      | FAILURE          | FAILURE          | 370              | 65               |
-| 9      | FAILURE          | FAILURE          | 542              | 56               |
-| 10     | FAILURE          | FAILURE          | 342              | 63               |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | FAILURE          | FAILURE          | 654.7            | 59.1             |
-| median | FAILURE          | FAILURE          | 464.5            | 60               |
+| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
+| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1      | FAILURE     | FAILURE     | 442         | 67          | 606         | 56          |
+| 2      | FAILURE     | FAILURE     |                           | 380         | 62          |
+| 3      | FAILURE     | FAILURE     |                           | 545         | 54
+| 4      | FAILURE     | FAILURE     |
+| 5      | FAILURE     | FAILURE     | 
+| 6      | FAILURE     | FAILURE     |
+| 7      | FAILURE     | FAILURE     |
+| 8      | FAILURE     | FAILURE     |
+| 9      | FAILURE     | FAILURE     | 
+| 10     | FAILURE     | FAILURE     |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| mean   | FAILURE     | FAILURE     |
+| median | FAILURE     | FAILURE     |
 ```
-
-Sample RRT_unstuck solutions:
-
-![](figures/rrt_unstuck_env3_fast.png)
-
-![](figures/rrt_unstuck_env3_slow.png)
 
 #### Environment 4: multiple narrow passages 🚧
 ```
-| trial  | RRT                                 | RRT_unstuck                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      | FAILURE          | FAILURE          |
-| 2      | FAILURE          | FAILURE          |
-| 3      | FAILURE          | FAILURE          |
-| 4      | FAILURE          | FAILURE          |
-| 5      | FAILURE          | FAILURE          |
-| 6      | FAILURE          | FAILURE          |
-| 7      | FAILURE          | FAILURE          |
-| 8      | FAILURE          | FAILURE          |
-| 9      | FAILURE          | FAILURE          |
-| 10     | FAILURE          | FAILURE          |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 
-| median |
+| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
+| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1      | FAILURE     | FAILURE     |
+| 2      | FAILURE     | FAILURE     |
+| 3      | FAILURE     | FAILURE     |
+| 4      | FAILURE     | FAILURE     |
+| 5      | FAILURE     | FAILURE     |
+| 6      | FAILURE     | FAILURE     |
+| 7      | FAILURE     | FAILURE     |
+| 8      | FAILURE     | FAILURE     |
+| 9      | FAILURE     | FAILURE     | 
+| 10     | FAILURE     | FAILURE     |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| mean   | FAILURE     | FAILURE     |
+| median | FAILURE     | FAILURE     |
 ```
 
-Sample RRT solution:
-Sample RRT_unstuck solution:
-
 #### Conclusion
-Though (unmodified) RRT is about 25% faster in an obstacle-free environment, the advantages of RRT_unstuck quickly becomes apparent. RRT has no mechanism for changing direction when it hits a wall, and it can enter a loop of forever growing the tree from the same small bit of space, never exploring enough to be un-stuck. 🚧
- 
-The control algorithm, though excruciatingly slow, does have one advantage over (unmodified) RRT—it _will_ eventually find a path to the goal if such a path exists, although it may take a very, very long time. Furthermore, due to the extremely dense sampling, the path our control returns will be very smooth.
+🚧 RRT_unstuck exploration vs. persistence tradeoff
+
+🚧 RRT_control will probably _eventually_ find a path given infinite time
 
 # Conclusion 🌿
 🚧
