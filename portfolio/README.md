@@ -172,6 +172,7 @@ Control clustering, after about 10 minutes (it's not much different after 2 hour
 
 #### Environment 0: no obstacle
 In terms of efficiency, RRT outperforms RRT_unstuck every time—it always builds the tree faster, using fewer vertices. RRT is on average 25% faster than RRT_unstuck. This is a not-insignificant advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
+
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
@@ -231,7 +232,7 @@ Sample RRT solution:
 
 Sample RRT_unstuck solution:
 
-![](figures/rrt_unstuck_env1.png)
+![](figures/rrt_unstuck_env1_slow.png)
 
 RRT failure:
 
@@ -255,7 +256,9 @@ RRT failure:
 Sample RRT solution:
 Sample RRT_unstuck solution:
 
-#### Environment 3: two narrow passages 🚧
+#### Environment 3: two narrow passages
+Only RRT_unstuck is able to solve environment 3. It usually grows a tree of about 500 vertices, but there are two outliers where we have trees with over 1000 vertices. I have displayed sample fast and slow solutions below the table.
+
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
@@ -275,8 +278,11 @@ Sample RRT_unstuck solution:
 | median | FAILURE          | FAILURE          | 464.5            | 60               |
 ```
 
-Sample RRT solution:
-Sample RRT_unstuck solution:
+Sample RRT_unstuck solutions:
+
+![](figures/rrt_unstuck_env3_fast.png)
+
+![](figures/rrt_unstuck_env3_slow.png)
 
 #### Environment 4: multiple narrow passages 🚧
 ```
