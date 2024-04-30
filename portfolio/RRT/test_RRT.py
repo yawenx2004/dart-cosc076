@@ -24,7 +24,7 @@ env4 = (100, 100, [[(10, -10), (10, 60), (15, 60), (15, -10)],
 
 '''change third parameter to change test environment'''
 rrt = RRT(robot, goal, env1)
-rrt_unstuck = RRT_unstuck(robot, goal, env3, stability=20)
+rrt_unstuck = RRT_unstuck(robot, goal, env4, stability=40)
 rrt_control = RRT_control(robot, goal, env0)
 
 '''comment in/out to test'''
