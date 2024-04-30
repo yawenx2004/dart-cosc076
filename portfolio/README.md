@@ -167,6 +167,7 @@ Unfortunately I do not have records of runtime. Especially with matplotlib visua
 I did once leave RRT_control to run for maybe 2 hours in the obstacle-less space and it still fails to find a path. It did spread to about (40, 40), but the goal is located at (100, 100) and moreover the more the control grows, the slower it goes—it sticks to areas that are already densely clustered since there is a greater probability of selecting points in these areas.
 
 Control clustering, after about 10 minutes (it's not much different after 2 hours):
+
 ![](figures/rrt_control_env0.png)
 
 #### Environment 0: no obstacle
@@ -191,9 +192,11 @@ In terms of efficiency, RRT outperforms RRT_unstuck every time—it always build
 ```
 
 Sample RRT solution:
+
 ![](figures/rrt_env0.png)
 
 Sample RRT_unstuck solution:
+
 ![](figures/rrt_unstuck_env0.png)
 
 #### Environment 1: low wall 🚧
@@ -221,8 +224,16 @@ Very quickly the advantages of RRT_unstuck behind to show up. Although RRT takes
 ```
 
 Sample RRT solution:
+
+![](figures/rrt_env1.png)
+
 Sample RRT_unstuck solution:
+
+![](figures/rrt_unstuck_env1.pmg)
+
 RRT failure:
+
+![](figres/rrt_env1_FAILURE.png)
 
 #### Environment 2: high wall 🚧
 ```
