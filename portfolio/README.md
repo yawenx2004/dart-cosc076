@@ -169,14 +169,19 @@ Control clustering:
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      |
-| 2      |
-| 3      |
-| 4      |
-| 5      |
+| 1      | 67               | 33               | 82               | 35               |
+| 2      | 64               | 31               | 77               | 33               |
+| 3      | 49               | 28               | 96               | 40               |
+| 4      | 62               | 30               | 90               | 36               |
+| 5      | 49               | 26               | 87               | 30               |
+| 6      | 74               | 34               | 82               | 30               |
+| 7      | 67               | 32               | 74               | 32               |
+| 8      | 53               | 28               | 63               | 30               |
+| 9      | 67               | 34               | 73               | 27               |
+| 10     | 59               | 34               | 98               | 34               |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 
-| median |
+| mean   | 61.1             | 31               | 82.2             | 32.7             |
+| median | 61.5             | 31.5             | 82               | 32.5             |
 ```
 
 Sample RRT solution:
@@ -187,14 +192,19 @@ Sample RRT_unstuck solution:
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      |
-| 2      |
-| 3      |
-| 4      |
-| 5      |
+| 1      |                  |                  | 130              | 33               |
+| 2      |                  |                  | 152              | 38               |
+| 3      |                  |                  | 105              | 38               |
+| 4      |                  |                  | 123              | 47               |
+| 5      |                  |                  | 135              | 45               |
+| 6      |                  |                  | 153              | 39               |
+| 7      |                  |                  | 153              | 43               |
+| 8      |                  |                  | 181              | 50               |
+| 9      |                  |                  | 96               | MISSING DATA     | <= accidentally exited program early
+| 10     |                  |                  | 161              | 51               |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 
-| median |
+| mean   |                  |                  | 138.9            | 42.667           | 
+| median |                  |                  | 144              | 43               | 
 ```
 
 Sample RRT solution:
@@ -223,14 +233,19 @@ Sample RRT_unstuck solution:
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      |
-| 2      |
-| 3      |
-| 4      |
-| 5      |
+| 1      | FAILURE          | FAILURE          | 398              | 58               |
+| 2      | FAILURE          | FAILURE          | 431              | 62               |
+| 3      | FAILURE          | FAILURE          | 419              | 62               |
+| 4      | FAILURE          | FAILURE          | 498              | 67               |
+| 5      | FAILURE          | FAILURE          | 1144             | 46               |
+| 6      | FAILURE          | FAILURE          | 756              | 55               |
+| 7      | FAILURE          | FAILURE          | 1647             | 57               |
+| 8      | FAILURE          | FAILURE          | 370              | 65               |
+| 9      | FAILURE          | FAILURE          | 542              | 56               |
+| 10     | FAILURE          | FAILURE          | 342              | 63               |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 
-| median |
+| mean   | FAILURE          | FAILURE          | 654.7            | 59.1             |
+| median | FAILURE          | FAILURE          | 464.5            | 60               |
 ```
 
 Sample RRT solution:
@@ -241,11 +256,16 @@ Sample RRT_unstuck solution:
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      |
-| 2      |
-| 3      |
-| 4      |
-| 5      |
+| 1      | FAILURE          | FAILURE          |
+| 2      | FAILURE          | FAILURE          |
+| 3      | FAILURE          | FAILURE          |
+| 4      | FAILURE          | FAILURE          |
+| 5      | FAILURE          | FAILURE          |
+| 6      | FAILURE          | FAILURE          |
+| 7      | FAILURE          | FAILURE          |
+| 8      | FAILURE          | FAILURE          |
+| 9      | FAILURE          | FAILURE          |
+| 10     | FAILURE          | FAILURE          |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
 | mean   | 
 | median |
