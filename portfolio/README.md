@@ -279,15 +279,10 @@ Sample RRT_unstuck (20) solution:
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 1      | FAILURE     | FAILURE     | 442         | 67          | 606         | 56          |
-| 2      | FAILURE     | FAILURE     |                           | 380         | 62          |
+| 2      | FAILURE     | FAILURE     | 788         | 78          | 380         | 62          |
 | 3      | FAILURE     | FAILURE     |                           | 545         | 54
 | 4      | FAILURE     | FAILURE     |
 | 5      | FAILURE     | FAILURE     | 
-| 6      | FAILURE     | FAILURE     |
-| 7      | FAILURE     | FAILURE     |
-| 8      | FAILURE     | FAILURE     |
-| 9      | FAILURE     | FAILURE     | 
-| 10     | FAILURE     | FAILURE     |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | mean   | FAILURE     | FAILURE     |
 | median | FAILURE     | FAILURE     |
@@ -307,11 +302,6 @@ Sample RRT_unstuck (20) solution:
 | 3      | FAILURE     | FAILURE     |
 | 4      | FAILURE     | FAILURE     |
 | 5      | FAILURE     | FAILURE     |
-| 6      | FAILURE     | FAILURE     |
-| 7      | FAILURE     | FAILURE     |
-| 8      | FAILURE     | FAILURE     |
-| 9      | FAILURE     | FAILURE     | 
-| 10     | FAILURE     | FAILURE     |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | mean   | FAILURE     | FAILURE     |
 | median | FAILURE     | FAILURE     |
