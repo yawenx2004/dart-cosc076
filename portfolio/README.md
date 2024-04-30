@@ -206,7 +206,7 @@ Sample RRT_unstuck (40) solution:
 
 ![](figures/rrt_unstuck_40_env0.png)
 
-#### Environment 1: low wall 🚧
+#### Environment 1: low wall
 Very quickly the advantages of RRT_unstuck begin to show. Although RRT takes about half the time taken by RRT_unstuck to find a path, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to grow points ad infinitum in the same tiny section of the search space. It gets stuck forever, effectively. These are the trials labeled as FAILURE in the table below.
 
 In this environment RRT_unstuck (stability 40) wins over RRT_unstuck (stability 20), a reversal from what we have in the last environment. In this environment, since there is an obstacle, there are frequent needs to handle getting stuck by shifting goals. RRT_unstuck (stability 40) sticks with a new goal for longer, therefore potentially making more moves in unproductive directions.
