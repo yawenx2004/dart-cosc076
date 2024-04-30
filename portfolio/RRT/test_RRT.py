@@ -34,5 +34,5 @@ rrt_control = RRT_control(robot, goal, env0)
 # rrt_unstuck.grow_tree(step_by_step=True)
 # rrt_unstuck.solve(visualize=True)
 
-# rrt_control.grow_tree(step_by_step=True)
-# rrt_control.solve()
+rrt_control.grow_tree(step_by_step=True)
+rrt_control.solve()
