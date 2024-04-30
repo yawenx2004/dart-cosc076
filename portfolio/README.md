@@ -166,7 +166,8 @@ Unfortunately I do not have records of runtime. Especially with matplotlib visua
 
 I did once leave RRT_control to run for maybe 2 hours in the obstacle-less space and it still fails to find a path. It did spread to about (40, 40), but the goal is located at (100, 100) and moreover the more the control grows, the slower it goes—it sticks to areas that are already densely clustered since there is a greater probability of selecting points in these areas.
 
-Control clustering, after about 10 minutes:
+Control clustering, after about 10 minutes (it's not much different after 2 hours):
+![](figures/rrt_control_env0.png)
 
 #### Environment 0: no obstacle
 In terms of efficiency, RRT outperforms RRT_unstuck every time—it always builds the tree faster, using fewer vertices. RRT is on average 25% faster than RRT_unstuck. This is a not-insignificant advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
@@ -190,8 +191,9 @@ In terms of efficiency, RRT outperforms RRT_unstuck every time—it always build
 ```
 
 Sample RRT solution:
-[](figures/rrt_env0.png)
+![](figures/rrt_env0.png)
 Sample RRT_unstuck solution:
+![](figure/rrt_unstuck_env0.png)
 
 #### Environment 1: low wall 🚧
 Very quickly the advantages of RRT_unstuck behind to show up. Although RRT takes only half the time taken by RRT_unstuck to find a solution, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to only grow points ad infinitum in the same tiny section of the search space.
