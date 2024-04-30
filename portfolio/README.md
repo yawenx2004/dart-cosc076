@@ -283,11 +283,9 @@ Sample RRT solution:
 Sample RRT_unstuck solution:
 
 #### Conclusion
-Though (unmodified) RRT is about 25% faster in an obstacle-free environment, the advantages of RRT_unstuck quickly becomes apparent. 🚧
+Though (unmodified) RRT is about 25% faster in an obstacle-free environment, the advantages of RRT_unstuck quickly becomes apparent. RRT has no mechanism for changing direction when it hits a wall, and it can enter a loop of forever growing the tree from the same small bit of space, never exploring enough to be un-stuck. 🚧
  
-The control algorithm, though excruciatingly slow, does have one advantage over (unmodified) RRT—it _will_ eventually find a path to the goal if such a path exists, although it may take a very, very long time. Furthermore, due to the extremely dense sampling, the path our control returns is very smooth.
-
-By contrast, RRT may get stuck in one place and never move, only growing new branches from a small handful of vertices. It never changes direction enough to bypass the obstacles.
+The control algorithm, though excruciatingly slow, does have one advantage over (unmodified) RRT—it _will_ eventually find a path to the goal if such a path exists, although it may take a very, very long time. Furthermore, due to the extremely dense sampling, the path our control returns will be very smooth.
 
 # Conclusion 🌿
 🚧
