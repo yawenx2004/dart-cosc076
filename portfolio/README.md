@@ -202,6 +202,8 @@ Sample RRT_unstuck solution:
 #### Environment 1: low wall 🚧
 Very quickly the advantages of RRT_unstuck behind to show up. Although RRT takes only half the time taken by RRT_unstuck to find a solution, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to only grow points ad infinitum in the same tiny section of the search space.
 
+Below I've included example solutiosn from RRT and RRT_unstuck, as well as an instance of RRT failure. As we can see, RRT_unstuck can create unnecessary branches, resulting in longer runtimes. By contrast, RRT very stubbornly sticks to growing the tree from the vertex closest to the goal and therefore can lead to failure.
+
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
@@ -229,11 +231,11 @@ Sample RRT solution:
 
 Sample RRT_unstuck solution:
 
-![](figures/rrt_unstuck_env1.pmg)
+![](figures/rrt_unstuck_env1.png)
 
 RRT failure:
 
-![](figres/rrt_env1_FAILURE.png)
+![](figures/rrt_env1_FAILURE.png)
 
 #### Environment 2: high wall 🚧
 ```
