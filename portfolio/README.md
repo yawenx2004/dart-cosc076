@@ -200,11 +200,11 @@ Sample RRT solution:
 
 Sample RRT_unstuck (20) solution:
 
-🚧
+![](figures/rrt_unstuck_20_env0.png)
 
 Sample RRT_unstuck (40) solution:
 
-🚧
+![](figures/rrt_unstuck_40_env0.png)
 
 #### Environment 1: low wall 🚧
 Very quickly the advantages of RRT_unstuck begin to show. Although RRT takes about half the time taken by RRT_unstuck to find a path, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to grow points ad infinitum in the same tiny section of the search space. It gets stuck forever, effectively. These are the trials labeled as FAILURE in the table below.
@@ -238,11 +238,11 @@ Sample RRT solution:
 
 Sample RRT_unstuck (20) solution:
 
-🚧
+![](figures/rrt_unstuck_20_env1.png)
 
 Sample RRT_unstuck (40) solution:
 
-🚧
+![](figures/rrt_unstuck_20_env1.png)
 
 RRT failure:
 
@@ -269,25 +269,28 @@ Here is where RRT fails to find a path at all.
 | median | FAILURE     | FAILURE     |
 ```
 
-#### Environment 3: two narrow passages
+Sample RRT_unstuck (20) solution:
+
+![](figures/rrt_unstuck_20_env2.png)
+
+#### Environment 3: two narrow passages 🚧
 ```
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 1      | FAILURE     | FAILURE     | 442         | 67          | 606         | 56          |
-| 2      | FAILURE     | FAILURE     |                           | 380         | 62          |
+| 2      | FAILURE     | FAILURE     | 788         | 78          | 380         | 62          |
 | 3      | FAILURE     | FAILURE     |                           | 545         | 54
 | 4      | FAILURE     | FAILURE     |
 | 5      | FAILURE     | FAILURE     | 
-| 6      | FAILURE     | FAILURE     |
-| 7      | FAILURE     | FAILURE     |
-| 8      | FAILURE     | FAILURE     |
-| 9      | FAILURE     | FAILURE     | 
-| 10     | FAILURE     | FAILURE     |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | mean   | FAILURE     | FAILURE     |
 | median | FAILURE     | FAILURE     |
 ```
+
+Sample RRT_unstuck (20) solution:
+
+![](figures/rrt_unstuck_20_env3.png)
 
 #### Environment 4: multiple narrow passages 🚧
 ```
@@ -299,11 +302,6 @@ Here is where RRT fails to find a path at all.
 | 3      | FAILURE     | FAILURE     |
 | 4      | FAILURE     | FAILURE     |
 | 5      | FAILURE     | FAILURE     |
-| 6      | FAILURE     | FAILURE     |
-| 7      | FAILURE     | FAILURE     |
-| 8      | FAILURE     | FAILURE     |
-| 9      | FAILURE     | FAILURE     | 
-| 10     | FAILURE     | FAILURE     |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | mean   | FAILURE     | FAILURE     |
 | median | FAILURE     | FAILURE     |
