@@ -160,11 +160,11 @@ A visualization of the problem—
 **Note:** This test case runs in about 15 seconds if you choose not to visualize the output, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
 
 ### 🌟 RRT Testing 🌟
-For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment—it instead clusters around the goal and takes too long to explore the environment—we test each environment on RRT and RRT_unstuck.
+For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment within a reasonable time—the tree clusters heavily around the starting point and takes very long to explore the environment—we test each environment on RRT and RRT_unstuck.
 
 Control clustering:
 
-#### Environment 0: no obstacle 🚧
+#### Environment 0: no obstacle
 In terms of efficiency, RRT outperforms RRT_unstuck every time—it always builds the tree faster, using fewer vertices. RRT is on average 25% faster than RRT_unstuck. This is a not-insignificant advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
@@ -189,6 +189,7 @@ Sample RRT solution:
 Sample RRT_unstuck solution:
 
 #### Environment 1: low wall 🚧
+Very quickly the advantages of RRT_unstuck behind to show up.
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
@@ -274,6 +275,11 @@ Sample RRT_unstuck solution:
 
 Sample RRT solution:
 Sample RRT_unstuck solution:
+
+#### Conclusion
+Though (unmodified) RRT is about 25% faster in an obstacle-free environment, the advantages of RRT_unstuck quickly becomes apparent. 🚧
+ 
+The control algorithm, though excruciatingly slow, does have one advantage over (unmodified) RRT—it _will_ eventually find a path to the goal if such a path exists, although it may take a very, very long time. By contrast, RRT may get stuck in one place and never move, only growing new branches from a small handful of vertices. It never changes direction enough to bypass the obstacles.
 
 # Conclusion 🌿
 🚧
