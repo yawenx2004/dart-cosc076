@@ -164,18 +164,16 @@ For RRT testing we have 5 environments pictured below. Since the control fails t
 
 Unfortunately I do not have records of runtime. Especially with matplotlib visualization, though, running RRT could take quite a while—environment 4 problems have taken RRT_stuck() 🚧 minutes to solve.
 
-I did once leave RRT_control to run for maybe 30 minutes and it eventually found a path through the obstacle-less space. Here it is. You can see from the very dense clustering that it's really not that efficient.
+I did once leave RRT_control to run for maybe 2 hours in the obstacle-less space and it still fails to find a path. It did spread to about (40, 40), but the goal is located at (100, 100) and moreover the more the control grows, the slower it goes—it sticks to areas that are already densely clustered since there is a greater probability of selecting points in these areas.
 
-Control clustering:
+Control clustering, after about 10 minutes:
 
 #### Environment 0: no obstacle
 In terms of efficiency, RRT outperforms RRT_unstuck every time—it always builds the tree faster, using fewer vertices. RRT is on average 25% faster than RRT_unstuck. This is a not-insignificant advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
-
-(One entry for RRT_control because it's such a pain to wait for.)
 ```
-| trial  | RRT                                 | RRT_unstuck                         | RRT_control                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| trial  | RRT                                 | RRT_unstuck                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
 | 1      | 67               | 33               | 82               | 35               |
 | 2      | 64               | 31               | 77               | 33               |
 | 3      | 49               | 28               | 96               | 40               |
@@ -195,24 +193,24 @@ Sample RRT solution:
 Sample RRT_unstuck solution:
 
 #### Environment 1: low wall 🚧
-Very quickly the advantages of RRT_unstuck behind to show up.
+Very quickly the advantages of RRT_unstuck behind to show up. Althouguh 
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1      |                  |                  | 130              | 33               |
-| 2      |                  |                  | 152              | 38               |
-| 3      |                  |                  | 105              | 38               |
-| 4      |                  |                  | 123              | 47               |
-| 5      |                  |                  | 135              | 45               |
-| 6      |                  |                  | 153              | 39               |
-| 7      |                  |                  | 153              | 43               |
-| 8      |                  |                  | 181              | 50               |
-| 9      |                  |                  | 96               | MISSING DATA     | <= accidentally exited program early
-| 10     |                  |                  | 161              | 51               |
+| 1      | 78               | 35               | 130              | 33               |
+| 2      | 67               | 28               | 152              | 38               |
+| 3      | FAILURE          | FAILURE          | 105              | 38               |
+| 4      | FAILURE          | FAILURE          | 123              | 47               |
+| 5      | 50               | 30               | 135              | 45               |
+| 6      | FAILURE          | FAILURE          | 153              | 39               |
+| 7      | FAILURE          | FAILURE          | 153              | 43               |
+| 8      | FAILURE          | FAILURE          | 181              | 50               |
+| 9      | FAILURE          | FAILURE          | 96               | MISSING DATA     | <= accidentally exited program early
+| 10     | 65               | 33               | 161              | 51               |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   |                  |                  | 138.9            | 42.667           | 
-| median |                  |                  | 144              | 43               | 
+| mean   | 65               | 31.5             | 138.9            | 42.667           | 
+| median | 66               | 31.5             | 144              | 43               | 
 ```
 
 Sample RRT solution:
