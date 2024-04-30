@@ -162,14 +162,20 @@ A visualization of the problem—
 ### 🌟 RRT Testing 🌟
 For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment within a reasonable time—the tree clusters heavily around the starting point and takes very long to explore the environment—we test each environment on RRT and RRT_unstuck.
 
+Unfortunately I do not have records of runtime. Especially with matplotlib visualization, though, running RRT could take quite a while—environment 4 problems have taken RRT_stuck() 🚧 minutes to solve.
+
+I did once leave RRT_control to run for maybe 30 minutes and it eventually found a path through the obstacle-less space. Here it is. You can see from the very dense clustering that it's really not that efficient.
+
 Control clustering:
 
 #### Environment 0: no obstacle
 In terms of efficiency, RRT outperforms RRT_unstuck every time—it always builds the tree faster, using fewer vertices. RRT is on average 25% faster than RRT_unstuck. This is a not-insignificant advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
+
+(One entry for RRT_control because it's such a pain to wait for.)
 ```
-| trial  | RRT                                 | RRT_unstuck                         |
-| ------ | vertices in tree | length of path   | vertices in tree | length of path   |
-| ------ | ---------------- | ---------------- | ---------------- | ---------------- |
+| trial  | RRT                                 | RRT_unstuck                         | RRT_control                         |
+| ------ | vertices in tree | length of path   | vertices in tree | length of path   | vertices in tree | length of path   |
+| ------ | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
 | 1      | 67               | 33               | 82               | 35               |
 | 2      | 64               | 31               | 77               | 33               |
 | 3      | 49               | 28               | 96               | 40               |
@@ -279,7 +285,9 @@ Sample RRT_unstuck solution:
 #### Conclusion
 Though (unmodified) RRT is about 25% faster in an obstacle-free environment, the advantages of RRT_unstuck quickly becomes apparent. 🚧
  
-The control algorithm, though excruciatingly slow, does have one advantage over (unmodified) RRT—it _will_ eventually find a path to the goal if such a path exists, although it may take a very, very long time. By contrast, RRT may get stuck in one place and never move, only growing new branches from a small handful of vertices. It never changes direction enough to bypass the obstacles.
+The control algorithm, though excruciatingly slow, does have one advantage over (unmodified) RRT—it _will_ eventually find a path to the goal if such a path exists, although it may take a very, very long time. Furthermore, due to the extremely dense sampling, the path our control returns is very smooth.
+
+By contrast, RRT may get stuck in one place and never move, only growing new branches from a small handful of vertices. It never changes direction enough to bypass the obstacles.
 
 # Conclusion 🌿
 🚧
