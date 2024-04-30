@@ -193,7 +193,8 @@ Sample RRT solution:
 Sample RRT_unstuck solution:
 
 #### Environment 1: low wall 🚧
-Very quickly the advantages of RRT_unstuck behind to show up. Althouguh 
+Very quickly the advantages of RRT_unstuck behind to show up. Although RRT takes only half the time taken by RRT_unstuck to find a solution, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to only grow points ad infinitum in the same tiny section of the search space.
+
 ```
 | trial  | RRT                                 | RRT_unstuck                         |
 | ------ | vertices in tree | length of path   | vertices in tree | length of path   |
@@ -209,12 +210,15 @@ Very quickly the advantages of RRT_unstuck behind to show up. Althouguh
 | 9      | FAILURE          | FAILURE          | 96               | MISSING DATA     | <= accidentally exited program early
 | 10     | 65               | 33               | 161              | 51               |
 | ------ | ---------------- | ---------------- | ---------------- | ---------------- |
-| mean   | 65               | 31.5             | 138.9            | 42.667           | 
-| median | 66               | 31.5             | 144              | 43               | 
+| mean   | 65*              | 31.5*            | 138.9            | 42.667           |
+| median | 66*              | 31.5*            | 144              | 43               |
+
+*technically infinite, given multiple instances of failure
 ```
 
 Sample RRT solution:
 Sample RRT_unstuck solution:
+RRT failure:
 
 #### Environment 2: high wall 🚧
 ```
