@@ -304,18 +304,23 @@ Sample RRT_unstuck (40) solution:
 
 #### Environment 4: multiple narrow passages 🚧
 ```
-| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
-| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     | 1204        | 77          | 673         | 74          | 749  79
-| 2      | FAILURE     | FAILURE     | 1419        | 76          | 1945        | 80          | 1180 84
-| 3      | FAILURE     | FAILURE     | 2566        | 90          | 1432        | 73          | 973 68
-| 4      | FAILURE     | FAILURE     | 1084        | 74          | 850         | 79          | 667 76
-| 5      | FAILURE     | FAILURE     | 1773        | 74          | 1794        | 78          | 1390 72
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | FAILURE     | FAILURE     | 1419        | 78.2        | 1338.8      | 76.8        | 937.8
-| median | FAILURE     | FAILURE     | 1609.2      | 76          | 1432        | 78          | 973
+Values in the table represent the number of vertices in the tree this specific instance of RRT has built.
+
+| trial  | RRT             | RRT_unstuck (5)  | RRT_unstuck (20) | RRT_unstuck (40) |
+| ------ | --------------- | ---------------- | ---------------- | ---------------- |
+| 1      | FAILURE         | 673              | 749              | 1204             |
+| 2      | FAILURE         | 1945             | 1180             | 1419             |
+| 3      | FAILURE         | 1432             | 973              | 2566             |
+| 4      | FAILURE         | 850              | 667              | 1084             |
+| 5      | FAILURE         | 1794             | 1390             | 1773             |
+| ------ | --------------- | ---------------- | ---------------- | ---------------- |
+| mean   | FAILURE         | 1338.8           | 937.8            | 1419             |
+| median | FAILURE         | 1432             | 973              | 1609.2           |
 ```
+
+Sample RRT_unstuck (5) solution:
+
+![](figures/rrt_unstuck_5_env4.png)
 
 Sample RRT_unstuck (20) solution:
 
