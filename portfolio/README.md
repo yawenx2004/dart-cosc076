@@ -179,19 +179,19 @@ RRT_unstuck (stability 40) also wins over RRT_unstuck (stability 20)—the more 
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | 67          | 33          | 111         | 32          | 154         | 30          |
-| 2      | 64          | 31          | 110         | 31          | 79          | 30          |
-| 3      | 49          | 28          | 113         | 31          | 94          | 32          |
-| 4      | 62          | 30          | 112         | 27          | 95          | 29          |
-| 5      | 49          | 26          | 77          | 34          | 105         | 31          |
-| 6      | 74          | 34          | 112         | 29          | 89          | 28          |
-| 7      | 67          | 32          | 114         | 30          | 101         | 36          |
-| 8      | 53          | 28          | 90          | 38          | 73          | 30          |
-| 9      | 67          | 34          | 124         | 33          | 104         | 33          |
-| 10     | 59          | 34          | 85          | 41          | 70          | 30          |
+| 1      | 67          | 33          | 111         | 32          | 154         | 30          | 132 35
+| 2      | 64          | 31          | 110         | 31          | 79          | 30          | 86 35
+| 3      | 49          | 28          | 113         | 31          | 94          | 32          | 129 32
+| 4      | 62          | 30          | 112         | 27          | 95          | 29          | 96 29
+| 5      | 49          | 26          | 77          | 34          | 105         | 31          | 91 34
+| 6      | 74          | 34          | 112         | 29          | 89          | 28          | 106 36
+| 7      | 67          | 32          | 114         | 30          | 101         | 36          | 113 37
+| 8      | 53          | 28          | 90          | 38          | 73          | 30          | 88 30
+| 9      | 67          | 34          | 124         | 33          | 104         | 33          | 111 33
+| 10     | 59          | 34          | 85          | 41          | 70          | 30          | 88 32
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | 61.1        | 31          | 104.8       | 32.6        | 96.4        | 30.9        |
-| median | 61.5        | 31.5        | 111.5       | 31          | 94.5        | 30          |
+| mean   | 61.1        | 31          | 104.8       | 32.6        | 96.4        | 30.9        | 104
+| median | 61.5        | 31.5        | 111.5       | 31          | 94.5        | 30          | 101
 ```
 
 Sample RRT solution:
@@ -206,7 +206,7 @@ Sample RRT_unstuck (40) solution:
 
 ![](figures/rrt_unstuck_40_env0.png)
 
-#### Environment 1: low wall 🚧
+#### Environment 1: low wall
 Very quickly the advantages of RRT_unstuck begin to show. Although RRT takes about half the time taken by RRT_unstuck to find a path, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to grow points ad infinitum in the same tiny section of the search space. It gets stuck forever, effectively. These are the trials labeled as FAILURE in the table below.
 
 In this environment RRT_unstuck (stability 40) wins over RRT_unstuck (stability 20), a reversal from what we have in the last environment. In this environment, since there is an obstacle, there are frequent needs to handle getting stuck by shifting goals. RRT_unstuck (stability 40) sticks with a new goal for longer, therefore potentially making more moves in unproductive directions.
@@ -215,19 +215,19 @@ In this environment RRT_unstuck (stability 40) wins over RRT_unstuck (stability 
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | 78          | 35          | 91          | 41          | 175         | 42          |
-| 2      | 67          | 28          | 86          | 39          | 260         | 55          |
-| 3      | FAILURE     | FAILURE     | 189         | 43          | 139         | 34          |
-| 4      | FAILURE     | FAILURE     | 182         | 41          | 140         | 47          |
-| 5      | 50          | 30          | 120         | 35          | 123         | 35          |
-| 6      | FAILURE     | FAILURE     | 229         | 53          | 242         | 38          |
-| 7      | FAILURE     | FAILURE     | 85          | 39          | 153         | 47          |
-| 8      | FAILURE     | FAILURE     | 88          | 34          | 203         | 36          |
-| 9      | FAILURE     | FAILURE     | 70          | 33          | 92          | 43          |
-| 10     | 65          | 33          | 131         | 35          | 90          | 37          |
+| 1      | 78          | 35          | 91          | 41          | 175         | 42          | 156 39
+| 2      | 67          | 28          | 86          | 39          | 260         | 55          | 148 36
+| 3      | FAILURE     | FAILURE     | 189         | 43          | 139         | 34          | 106 32
+| 4      | FAILURE     | FAILURE     | 182         | 41          | 140         | 47          | 154 35
+| 5      | 50          | 30          | 120         | 35          | 123         | 35          | 129 39
+| 6      | FAILURE     | FAILURE     | 229         | 53          | 242         | 38          | 196 43
+| 7      | FAILURE     | FAILURE     | 85          | 39          | 153         | 47          | 214 32
+| 8      | FAILURE     | FAILURE     | 88          | 34          | 203         | 36          | 257 41
+| 9      | FAILURE     | FAILURE     | 70          | 33          | 92          | 43          | 167 37
+| 10     | 65          | 33          | 131         | 35          | 90          | 37          | 125 33
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | 65*         | 31.5*       | 127.1       | 39.3        | 161.7       | 41.4        |
-| median | 66*         | 31.5*       | 105.5       | 39          | 139.5       | 40          |
+| mean   | 65*         | 31.5*       | 127.1       | 39.3        | 161.7       | 41.4        | 155.2
+| median | 66*         | 31.5*       | 105.5       | 39          | 139.5       | 40          | 155
 
 *technically infinite, given multiple instances of failure
 ```
@@ -254,38 +254,37 @@ Here is where RRT fails to find a path at all.
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     | 608         | 61
-| 2      | FAILURE     | FAILURE     | 188         | 54
-| 3      | FAILURE     | FAILURE     | 192         | 57
-| 4      | FAILURE     | FAILURE     | 520         | 67
-| 5      | FAILURE     | FAILURE     |
-| 6      | FAILURE     | FAILURE     |
-| 7      | FAILURE     | FAILURE     |
-| 8      | FAILURE     | FAILURE     |
-| 9      | FAILURE     | FAILURE     | 
-| 10     | FAILURE     | FAILURE     |
+| 1      | FAILURE     | FAILURE     | 608         | 61          | 506         | 61          | 354 65
+| 2      | FAILURE     | FAILURE     | 188         | 54          | 567         | 52          | 254 50
+| 3      | FAILURE     | FAILURE     | 192         | 57          | 748         | 69          | 300 54
+| 4      | FAILURE     | FAILURE     | 520         | 67          | 371         | 52          | 329 55
+| 5      | FAILURE     | FAILURE     | 612         | 66          | 745         | 53          | 463 70
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | FAILURE     | FAILURE     |
-| median | FAILURE     | FAILURE     |
+| mean   | FAILURE     | FAILURE     | 424                       | 587.4                     | 340
+| median | FAILURE     | FAILURE     | 520                       | 567                       | 329
 ```
 
 Sample RRT_unstuck (20) solution:
 
 ![](figures/rrt_unstuck_20_env2.png)
 
+Sample RRT_unstuck (40) solution:
+
+![](figures/rrt_unstuck_40_env2.png)
+
 #### Environment 3: two narrow passages 🚧
 ```
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     | 442         | 67          | 606         | 56          |
-| 2      | FAILURE     | FAILURE     | 788         | 78          | 380         | 62          |
-| 3      | FAILURE     | FAILURE     |                           | 545         | 54
-| 4      | FAILURE     | FAILURE     |
-| 5      | FAILURE     | FAILURE     | 
+| 1      | FAILURE     | FAILURE     | 442         | 67          | 606         | 56          | 406 64
+| 2      | FAILURE     | FAILURE     | 788         | 78          | 380         | 62          | 420 63
+| 3      | FAILURE     | FAILURE     | 661         | 56          | 545         | 54          | 318 47
+| 4      | FAILURE     | FAILURE     | 547         | 69          | 1105        | 56          | 257 51
+| 5      | FAILURE     | FAILURE     | 492         | 60          | 372         | 56          | 268 56
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | FAILURE     | FAILURE     |
-| median | FAILURE     | FAILURE     |
+| mean   | FAILURE     | FAILURE     | 586         | 66          | 601.6       | 56.8        | 333.8
+| median | FAILURE     | FAILURE     | 547         | 67          | 545         | 56          | 318
 ```
 
 Sample RRT_unstuck (20) solution:
@@ -297,18 +296,26 @@ Sample RRT_unstuck (20) solution:
 | trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
 | ------ | vertices    | path length | vertices    | path length | vertices    | path length |
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     |
-| 2      | FAILURE     | FAILURE     |
-| 3      | FAILURE     | FAILURE     |
-| 4      | FAILURE     | FAILURE     |
-| 5      | FAILURE     | FAILURE     |
+| 1      | FAILURE     | FAILURE     | 1204        | 77          | 673         | 74          | 749  79
+| 2      | FAILURE     | FAILURE     | 1419        | 76          | 1945        | 80          | 1180 84
+| 3      | FAILURE     | FAILURE     | 2566        | 90          | 1432        | 73          | 973 68
+| 4      | FAILURE     | FAILURE     | 1084        | 74          | 850         | 79          | 667 76
+| 5      | FAILURE     | FAILURE     | 1773        | 74          | 1794        | 78          | 1390 72
 | ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | FAILURE     | FAILURE     |
-| median | FAILURE     | FAILURE     |
+| mean   | FAILURE     | FAILURE     | 1419        | 78.2        | 1338.8      | 76.8        | 937.8
+| median | FAILURE     | FAILURE     | 1609.2      | 76          | 1432        | 78          | 973
 ```
 
+Sample RRT_unstuck (20) solution:
+
+![](figures/rrt_unstuck_20_env4.png)
+
+Sample RRT_unstuck (40) solution:
+
+![](figures/rrt_unstuck_40_env4.png)
+
 #### Conclusion
-🚧 RRT_unstuck exploration vs. persistence tradeoff
+🚧 RRT_unstuck exploration vs. persistence tradeoff; exploration in narrow passages but in open spaces persistence is helpful
 
 🚧 RRT_control will probably _eventually_ find a path given infinite time
 
