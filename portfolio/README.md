@@ -272,7 +272,9 @@ Sample RRT_unstuck (40) solution:
 
 ![](figures/rrt_unstuck_40_env2.png)
 
-#### Environment 3: two narrow passages 🚧
+#### Environment 3: two narrow passages
+In this case, RRT_unstuck (stability 20) once again has the advantage. It offers a good middle ground between 5's random exploration and 40's stubbornness.
+
 ```
 Values in the table represent the number of vertices in the tree this specific instance of RRT has built.
 
