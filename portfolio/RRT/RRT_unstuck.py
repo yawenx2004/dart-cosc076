@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from RRT import RRT
 
 class RRT_unstuck(RRT):
-    def __init__(self, start, goal, env, step_size=5, stability=10):
+    def __init__(self, start, goal, env, step_size=5, stability=5):
         super().__init__(start, goal, env, step_size)
 
         # we want to change the goal randomly whenever we get stuck
