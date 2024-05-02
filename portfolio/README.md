@@ -333,9 +333,7 @@ Sample RRT_unstuck (40) solution:
 ![](figures/rrt_unstuck_40_env4.png)
 
 #### Conclusion
-🚧 RRT_unstuck exploration vs. persistence tradeoff; exploration in narrow passages but in open spaces persistence is helpful
-
-🚧 RRT_control will probably _eventually_ find a path given infinite time
+In my RRT_unstuck implimentation, adjusting the stability value involves a tradeoff between exploration (low values) and persistence (high values). In open spaces, persistence is important, where as in narrow passages exploration is essential for not getting stuck.
 
 # Conclusion 🌿
 🚧
