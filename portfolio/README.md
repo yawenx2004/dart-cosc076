@@ -302,20 +302,22 @@ Sample RRT_unstuck (40) solution:
 
 ![](figures/rrt_unstuck_40_env3.png)
 
-#### Environment 4: multiple narrow passages 🚧
+#### Environment 4: multiple narrow passages 
+Here the advantage goes to RRT_unstuck (stability 5), and 30% it's quite significant. Here, with multiple narrow passages, exploration becomes more important.
+
 ```
 Values in the table represent the number of vertices in the tree this specific instance of RRT has built.
 
 | trial  | RRT             | RRT_unstuck (5)  | RRT_unstuck (20) | RRT_unstuck (40) |
 | ------ | --------------- | ---------------- | ---------------- | ---------------- |
-| 1      | FAILURE         | 673              | 749              | 1204             |
-| 2      | FAILURE         | 1945             | 1180             | 1419             |
-| 3      | FAILURE         | 1432             | 973              | 2566             |
-| 4      | FAILURE         | 850              | 667              | 1084             |
-| 5      | FAILURE         | 1794             | 1390             | 1773             |
+| 1      | FAILURE         | 749              | 1204             | 673              |
+| 2      | FAILURE         | 1180             | 1419             | 1945             |
+| 3      | FAILURE         | 973              | 2566             | 1432             |
+| 4      | FAILURE         | 667              | 1084             | 850              |
+| 5      | FAILURE         | 1390             | 1773             | 1794             |
 | ------ | --------------- | ---------------- | ---------------- | ---------------- |
-| mean   | FAILURE         | 1338.8           | 937.8            | 1419             |
-| median | FAILURE         | 1432             | 973              | 1609.2           |
+| mean   | FAILURE         | 937.8            | 1609.2           | 1338.8           |
+| median | FAILURE         | 973              | 1419             | 1432             |
 ```
 
 Sample RRT_unstuck (5) solution:
