@@ -236,22 +236,6 @@ Values in the table represent the number of vertices in the tree this specific i
 *technically infinite, given multiple instances of failure
 ```
 
-Sample RRT solution:
-
-![](figures/rrt_env1.png)
-
-Sample RRT_unstuck (5) solution:
-
-![](figures/rrt_unstuck_20_env1.png)
-
-Sample RRT_unstuck (20) solution:
-
-![](figures/rrt_unstuck_20_env1.png)
-
-Sample RRT_unstuck (40) solution:
-
-![](figures/rrt_unstuck_20_env1.png)
-
 RRT failure:
 
 ![](figures/rrt_env1_FAILURE.png)
