@@ -160,7 +160,7 @@ A visualization of the problem—
 **Note:** This test case runs in about 15 seconds if you choose not to visualize the output, but due to matplotlib loading time, if you do choose to visualize, it will take quite a bit longer.
 
 ### 🌟 RRT Testing 🌟
-For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment within a reasonable time—the tree clusters heavily around the starting point and takes very long to explore the environment—we test each environment on RRT and RRT_unstuck (with stability 20 and 40).
+For RRT testing we have 5 environments pictured below. Since the control fails to find a solution for any of the environment within a reasonable time—the tree clusters heavily around the starting point and takes very long to explore the environment—we test each environment on RRT and RRT_unstuck (with stability 5, 20,and 40), and compare performance. We operationalize speed as having a smaller tree with fewer vertices. This means the algorithm has found the end early and can then terminate.
 
 Unfortunately I do not have records of runtime. Especially with matplotlib visualization, though, running RRT could take quite a while—environment 4 problems have taken RRT_stuck() 🚧 minutes to solve.
 
@@ -175,23 +175,23 @@ In terms of efficiency, RRT outperforms RRT_unstuck almost every time—it build
 
 In RRT_unstuck, stability of 40 seems to have a bit of an advantage
 
+Values in the table below represent the number of vertices in the tree this specific instance of RRT has built.
 ```
-| trial  | RRT                       | RRT_unstuck (5)           | RRT_unstuck (20)          | RRT_unstuck (40)          |
-| ------ | vertices    | path length | vertices    | path length | vertices    | path length | vertices    | path length |
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | 67          | 33          | 132         | 35          | 111         | 32          | 154         | 30          |
-| 2      | 64          | 31          | 86          | 35          | 110         | 31          | 79          | 30          |
-| 3      | 49          | 28          | 129         | 32          | 113         | 31          | 94          | 32          |
-| 4      | 62          | 30          | 96          | 29          | 112         | 27          | 95          | 29          |
-| 5      | 49          | 26          | 91          | 34          | 77          | 34          | 105         | 31          |
-| 6      | 74          | 34          | 106         | 36          | 112         | 29          | 89          | 28          |
-| 7      | 67          | 32          | 113         | 37          | 114         | 30          | 101         | 36          |
-| 8      | 53          | 28          | 88          | 30          | 90          | 38          | 73          | 30          |
-| 9      | 67          | 34          | 111         | 33          | 124         | 33          | 104         | 33          |
-| 10     | 59          | 34          | 88          | 32          | 85          | 41          | 70          | 30          |
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | 61.1        | 31          | 104                       | 104.8       | 32.6        | 96.4        | 30.9        |
-| median | 61.5        | 31.5        | 101                       | 111.5       | 31          | 94.5        | 30          |
+| trial  | RRT             | RRT_unstuck (5)  | RRT_unstuck (20) | RRT_unstuck (40) |
+| ------ | --------------- | ---------------- | ---------------- | ---------------- |
+| 1      | 67              | 132              | 111              | 154              |
+| 2      | 64              | 86               | 110              | 79               |
+| 3      | 49              | 129              | 113              | 94               |
+| 4      | 62              | 96               | 112              | 95               |
+| 5      | 49              | 91               | 77               | 105              |
+| 6      | 74              | 106              | 112              | 89               |
+| 7      | 67              | 113              | 114              | 101              |
+| 8      | 53              | 88               | 90               | 73               |
+| 9      | 67              | 111              | 124              | 104              |
+| 10     | 59              | 88               | 85               | 70               |
+| ------ | --------------- | ---------------- | ---------------- | ---------------- |
+| mean   | 61.1            | 104              | 104.8            | 96.4             |
+| median | 61.5            | 101              | 111.5            | 94.5             |
 ```
 
 Sample RRT solution:
