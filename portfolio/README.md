@@ -214,6 +214,8 @@ Sample RRT_unstuck (40) solution:
 #### Environment 1: low wall
 Very quickly the advantages of RRT_unstuck begin to show. Although RRT takes about half the time taken by RRT_unstuck to find a path, this only applies when RRT is actually able to vault over the obstacle. In 60% of the trials RRT gets stuck behind the obstacle and begins to grow points ad infinitum in the same tiny section of the search space. It gets stuck forever, effectively. These are the trials labeled as FAILURE in the table below.
 
+Stability doesn't seem to affect RRT_unstuck performance much, though 40 seems to have a slight advantage. SO far, the pattern seems to be that stability 40 has an advantage over lower stability in problems that RRT is able to solve at least sometimes.
+
 ```
 Values in the table represent the number of vertices in the tree this specific instance of RRT has built.
 
@@ -240,8 +242,9 @@ RRT failure:
 
 ![](figures/rrt_env1_FAILURE.png)
 
-#### Environment 2: high wall 🚧
-Here is where RRT fails to find a path at all.
+#### Environment 2: high wall
+Here is where RRT fails to find a path at all. Here, RRT_unstuck (stability 20) has a mild advantage over 5 and 40.
+
 ```
 Values in the table represent the number of vertices in the tree this specific instance of RRT has built.
 
@@ -271,22 +274,31 @@ Sample RRT_unstuck (40) solution:
 
 #### Environment 3: two narrow passages 🚧
 ```
-| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
-| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | FAILURE     | FAILURE     | 442         | 67          | 606         | 56          | 406 64
-| 2      | FAILURE     | FAILURE     | 788         | 78          | 380         | 62          | 420 63
-| 3      | FAILURE     | FAILURE     | 661         | 56          | 545         | 54          | 318 47
-| 4      | FAILURE     | FAILURE     | 547         | 69          | 1105        | 56          | 257 51
-| 5      | FAILURE     | FAILURE     | 492         | 60          | 372         | 56          | 268 56
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | FAILURE     | FAILURE     | 586         | 66          | 601.6       | 56.8        | 333.8
-| median | FAILURE     | FAILURE     | 547         | 67          | 545         | 56          | 318
+Values in the table represent the number of vertices in the tree this specific instance of RRT has built.
+
+| trial  | RRT             | RRT_unstuck (5)  | RRT_unstuck (20) | RRT_unstuck (40) |
+| ------ | --------------- | ---------------- | ---------------- | ---------------- |
+| 1      | FAILURE         | 606              | 406              | 442              |
+| 2      | FAILURE         | 380              | 420              | 788              |
+| 3      | FAILURE         | 545              | 318              | 661              |
+| 4      | FAILURE         | 1105             | 257              | 547              |
+| 5      | FAILURE         | 372              | 268              | 492              |
+| ------ | --------------- | ---------------- | ---------------- | ---------------- |
+| mean   | FAILURE         | 601.6            | 333.8            | 586              |
+| median | FAILURE         | 545              | 318              | 547              |
 ```
+
+Sample RRT_unstuck (5) solution:
+
+![](figures/rrt_unstuck_5_env3.png)
 
 Sample RRT_unstuck (20) solution:
 
 ![](figures/rrt_unstuck_20_env3.png)
+
+Sample RRT_unstuck (40) solution:
+
+![](figures/rrt_unstuck_40_env3.png)
 
 #### Environment 4: multiple narrow passages 🚧
 ```
