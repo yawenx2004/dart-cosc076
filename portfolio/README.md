@@ -171,32 +171,36 @@ Control clustering, after about 10 minutes (it's not much different after 2 hour
 ![](figures/rrt_control_env0.png)
 
 #### Environment 0: no obstacle
-In terms of efficiency, RRT outperforms RRT_unstuck almost every time—it builds the tree faster, using fewer vertices. RRT is on average 58% faster than RRT_unstuck (stability 40). This is quite significant an advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
+In terms of efficiency, RRT outperforms RRT_unstuck almost every time—it builds the tree faster, using fewer vertices. RRT is on average 68% faster than RRT_unstuck (stability 40). This is quite significant an advantage, particularly when it comes to large graphs. So, in an obstacle-less environment, RRT wins.
 
-RRT_unstuck (stability 40) also wins over RRT_unstuck (stability 20)—the more stable RRT is less easily persuaded to change goals, and therefore has an advantage in an obstacle-less environment where the best path is just straight toward the obstacle.
+In RRT_unstuck, stability of 40 seems to have a bit of an advantage
 
 ```
-| trial  | RRT                       | RRT_unstuck (20)          | RRT_unstuck (40)          |
-| ------ | vertices    | path length | vertices    | path length | vertices    | path length |
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1      | 67          | 33          | 111         | 32          | 154         | 30          | 132 35
-| 2      | 64          | 31          | 110         | 31          | 79          | 30          | 86 35
-| 3      | 49          | 28          | 113         | 31          | 94          | 32          | 129 32
-| 4      | 62          | 30          | 112         | 27          | 95          | 29          | 96 29
-| 5      | 49          | 26          | 77          | 34          | 105         | 31          | 91 34
-| 6      | 74          | 34          | 112         | 29          | 89          | 28          | 106 36
-| 7      | 67          | 32          | 114         | 30          | 101         | 36          | 113 37
-| 8      | 53          | 28          | 90          | 38          | 73          | 30          | 88 30
-| 9      | 67          | 34          | 124         | 33          | 104         | 33          | 111 33
-| 10     | 59          | 34          | 85          | 41          | 70          | 30          | 88 32
-| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| mean   | 61.1        | 31          | 104.8       | 32.6        | 96.4        | 30.9        | 104
-| median | 61.5        | 31.5        | 111.5       | 31          | 94.5        | 30          | 101
+| trial  | RRT                       | RRT_unstuck (5)           | RRT_unstuck (20)          | RRT_unstuck (40)          |
+| ------ | vertices    | path length | vertices    | path length | vertices    | path length | vertices    | path length |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1      | 67          | 33          | 132         | 35          | 111         | 32          | 154         | 30          |
+| 2      | 64          | 31          | 86          | 35          | 110         | 31          | 79          | 30          |
+| 3      | 49          | 28          | 129         | 32          | 113         | 31          | 94          | 32          |
+| 4      | 62          | 30          | 96          | 29          | 112         | 27          | 95          | 29          |
+| 5      | 49          | 26          | 91          | 34          | 77          | 34          | 105         | 31          |
+| 6      | 74          | 34          | 106         | 36          | 112         | 29          | 89          | 28          |
+| 7      | 67          | 32          | 113         | 37          | 114         | 30          | 101         | 36          |
+| 8      | 53          | 28          | 88          | 30          | 90          | 38          | 73          | 30          |
+| 9      | 67          | 34          | 111         | 33          | 124         | 33          | 104         | 33          |
+| 10     | 59          | 34          | 88          | 32          | 85          | 41          | 70          | 30          |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| mean   | 61.1        | 31          | 104                       | 104.8       | 32.6        | 96.4        | 30.9        |
+| median | 61.5        | 31.5        | 101                       | 111.5       | 31          | 94.5        | 30          |
 ```
 
 Sample RRT solution:
 
 ![](figures/rrt_env0.png)
+
+Sample RRT_unstuck (5) solution:
+
+![](figures/rrt_unstuck_5_env0.png)
 
 Sample RRT_unstuck (20) solution:
 
